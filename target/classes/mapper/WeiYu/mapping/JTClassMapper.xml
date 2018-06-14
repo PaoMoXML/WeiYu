@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.JTClassMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.JTClass" >
+    <result column="Classweek" property="classweek" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtTitle" property="badmintoncourttitle" jdbcType="VARCHAR" />
+    <result column="ClassStatus" property="classstatus" jdbcType="CHAR" />
+    <result column="TeachingTimeBeginTime" property="teachingtimebegintime" jdbcType="TIME" />
+    <result column="TeachingTimeEndTime" property="teachingtimeendtime" jdbcType="TIME" />
+    <result column="ClassStartDate" property="classstartdate" jdbcType="DATE" />
+    <result column="ClassEndDate" property="classenddate" jdbcType="DATE" />
+    <result column="ClassTeachingTime" property="classteachingtime" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.JTClass" >
+    insert into JTClass (Classweek, BadmintonCourtTitle, ClassStatus, 
+      TeachingTimeBeginTime, TeachingTimeEndTime, ClassStartDate, 
+      ClassEndDate, ClassTeachingTime)
+    values (#{classweek,jdbcType=VARCHAR}, #{badmintoncourttitle,jdbcType=VARCHAR}, #{classstatus,jdbcType=CHAR}, 
+      #{teachingtimebegintime,jdbcType=TIME}, #{teachingtimeendtime,jdbcType=TIME}, #{classstartdate,jdbcType=DATE}, 
+      #{classenddate,jdbcType=DATE}, #{classteachingtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.JTClass" >
+    insert into JTClass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classweek != null" >
+        Classweek,
+      </if>
+      <if test="badmintoncourttitle != null" >
+        BadmintonCourtTitle,
+      </if>
+      <if test="classstatus != null" >
+        ClassStatus,
+      </if>
+      <if test="teachingtimebegintime != null" >
+        TeachingTimeBeginTime,
+      </if>
+      <if test="teachingtimeendtime != null" >
+        TeachingTimeEndTime,
+      </if>
+      <if test="classstartdate != null" >
+        ClassStartDate,
+      </if>
+      <if test="classenddate != null" >
+        ClassEndDate,
+      </if>
+      <if test="classteachingtime != null" >
+        ClassTeachingTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classweek != null" >
+        #{classweek,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourttitle != null" >
+        #{badmintoncourttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="classstatus != null" >
+        #{classstatus,jdbcType=CHAR},
+      </if>
+      <if test="teachingtimebegintime != null" >
+        #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null" >
+        #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+      <if test="classstartdate != null" >
+        #{classstartdate,jdbcType=DATE},
+      </if>
+      <if test="classenddate != null" >
+        #{classenddate,jdbcType=DATE},
+      </if>
+      <if test="classteachingtime != null" >
+        #{classteachingtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectByOther" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.JTClass" >
+    select *
+    from JTClass
+    <where>
+      <if test="classweek != null">
+              classweek = #{classweek}
+      </if>
+      <if test="badmintoncourttitle != null" >
+        AND badmintoncourttitle like #{badmintoncourttitle}
+      </if>
+      <if test="classstatus != null">
+        AND classstatus like #{classstatus}
+      </if>
+      <if test="classteachingtime != null">
+        AND classteachingtime like #{classteachingtime}
+      </if>
+    </where>
+  </select>
+</mapper>

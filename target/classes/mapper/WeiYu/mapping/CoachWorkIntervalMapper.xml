@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.CoachWorkIntervalMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.CoachWorkInterval" >
+    <id column="CoachId" property="coachid" jdbcType="VARCHAR" />
+    <result column="CoachWorkIntervaltype" property="coachworkintervaltype" jdbcType="CHAR" />
+    <result column="CoachWorkIntervalId" property="coachworkintervalid" jdbcType="VARCHAR" />
+    <result column="CoachWorkIntervalStandbyone" property="coachworkintervalstandbyone" jdbcType="VARCHAR" />
+    <result column="CoachWorkIntervalStandbytwo" property="coachworkintervalstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CoachId, CoachWorkIntervaltype, CoachWorkIntervalId, CoachWorkIntervalStandbyone, 
+    CoachWorkIntervalStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CoachWorkInterval
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CoachWorkInterval
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.CoachWorkInterval" >
+    insert into CoachWorkInterval (CoachId, CoachWorkIntervaltype, CoachWorkIntervalId, 
+      CoachWorkIntervalStandbyone, CoachWorkIntervalStandbytwo
+      )
+    values (#{coachid,jdbcType=VARCHAR}, #{coachworkintervaltype,jdbcType=CHAR}, #{coachworkintervalid,jdbcType=VARCHAR}, 
+      #{coachworkintervalstandbyone,jdbcType=VARCHAR}, #{coachworkintervalstandbytwo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.CoachWorkInterval" >
+    insert into CoachWorkInterval
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coachid != null" >
+        CoachId,
+      </if>
+      <if test="coachworkintervaltype != null" >
+        CoachWorkIntervaltype,
+      </if>
+      <if test="coachworkintervalid != null" >
+        CoachWorkIntervalId,
+      </if>
+      <if test="coachworkintervalstandbyone != null" >
+        CoachWorkIntervalStandbyone,
+      </if>
+      <if test="coachworkintervalstandbytwo != null" >
+        CoachWorkIntervalStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coachid != null" >
+        #{coachid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachworkintervaltype != null" >
+        #{coachworkintervaltype,jdbcType=CHAR},
+      </if>
+      <if test="coachworkintervalid != null" >
+        #{coachworkintervalid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachworkintervalstandbyone != null" >
+        #{coachworkintervalstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="coachworkintervalstandbytwo != null" >
+        #{coachworkintervalstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.CoachWorkInterval" >
+    update CoachWorkInterval
+    <set >
+      <if test="coachworkintervaltype != null" >
+        CoachWorkIntervaltype = #{coachworkintervaltype,jdbcType=CHAR},
+      </if>
+      <if test="coachworkintervalid != null" >
+        CoachWorkIntervalId = #{coachworkintervalid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachworkintervalstandbyone != null" >
+        CoachWorkIntervalStandbyone = #{coachworkintervalstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="coachworkintervalstandbytwo != null" >
+        CoachWorkIntervalStandbytwo = #{coachworkintervalstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.CoachWorkInterval" >
+    update CoachWorkInterval
+    set CoachWorkIntervaltype = #{coachworkintervaltype,jdbcType=CHAR},
+      CoachWorkIntervalId = #{coachworkintervalid,jdbcType=VARCHAR},
+      CoachWorkIntervalStandbyone = #{coachworkintervalstandbyone,jdbcType=VARCHAR},
+      CoachWorkIntervalStandbytwo = #{coachworkintervalstandbytwo,jdbcType=INTEGER}
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </update>
+</mapper>

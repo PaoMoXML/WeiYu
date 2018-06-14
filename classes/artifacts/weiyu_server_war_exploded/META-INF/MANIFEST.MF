@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Implementation-Version: 2.1.0
+Built-By: xml00
+Implementation-Vendor-Id: io.renren
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_73
+Main-Class: ${start-class}
+

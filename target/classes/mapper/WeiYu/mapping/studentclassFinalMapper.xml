@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.renren.modules.WeiYu.mapper.studentclassFinalMapper">
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.studentclassFinal">
+    <result column="ClassId" jdbcType="VARCHAR" property="classid" />
+    <result column="BadmintonCourtTitle" jdbcType="VARCHAR" property="badmintoncourttitle" />
+    <result column="ClassType" jdbcType="VARCHAR" property="classtype" />
+    <result column="ClassName" jdbcType="VARCHAR" property="classname" />
+    <result column="ClassStartDate" jdbcType="DATE" property="classstartdate" />
+    <result column="ClassEndDate" jdbcType="DATE" property="classenddate" />
+    <result column="Classweek" jdbcType="VARCHAR" property="classweek" />
+    <result column="CoachId" jdbcType="VARCHAR" property="coachid" />
+    <result column="CoachName" jdbcType="VARCHAR" property="coachname" />
+    <result column="BadmintonCourtId" jdbcType="VARCHAR" property="badmintoncourtid" />
+    <result column="TeachingTimeId" jdbcType="VARCHAR" property="teachingtimeid" />
+    <result column="TeachingTimeBeginTime" jdbcType="TIME" property="teachingtimebegintime" />
+    <result column="TeachingTimeEndTime" jdbcType="TIME" property="teachingtimeendtime" />
+    <result column="SelectClassStudentId" jdbcType="VARCHAR" property="selectclassstudentid" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.studentclassFinal">
+    insert into studentclassFinal (ClassId, BadmintonCourtTitle, ClassType, 
+      ClassName, ClassStartDate, ClassEndDate, 
+      Classweek, CoachId, CoachName, 
+      BadmintonCourtId, TeachingTimeId, TeachingTimeBeginTime, 
+      TeachingTimeEndTime, SelectClassStudentId)
+    values (#{classid,jdbcType=VARCHAR}, #{badmintoncourttitle,jdbcType=VARCHAR}, #{classtype,jdbcType=VARCHAR}, 
+      #{classname,jdbcType=VARCHAR}, #{classstartdate,jdbcType=DATE}, #{classenddate,jdbcType=DATE}, 
+      #{classweek,jdbcType=VARCHAR}, #{coachid,jdbcType=VARCHAR}, #{coachname,jdbcType=VARCHAR}, 
+      #{badmintoncourtid,jdbcType=VARCHAR}, #{teachingtimeid,jdbcType=VARCHAR}, #{teachingtimebegintime,jdbcType=TIME}, 
+      #{teachingtimeendtime,jdbcType=TIME}, #{selectclassstudentid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.studentclassFinal">
+    insert into studentclassFinal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="classid != null">
+        ClassId,
+      </if>
+      <if test="badmintoncourttitle != null">
+        BadmintonCourtTitle,
+      </if>
+      <if test="classtype != null">
+        ClassType,
+      </if>
+      <if test="classname != null">
+        ClassName,
+      </if>
+      <if test="classstartdate != null">
+        ClassStartDate,
+      </if>
+      <if test="classenddate != null">
+        ClassEndDate,
+      </if>
+      <if test="classweek != null">
+        Classweek,
+      </if>
+      <if test="coachid != null">
+        CoachId,
+      </if>
+      <if test="coachname != null">
+        CoachName,
+      </if>
+      <if test="badmintoncourtid != null">
+        BadmintonCourtId,
+      </if>
+      <if test="teachingtimeid != null">
+        TeachingTimeId,
+      </if>
+      <if test="teachingtimebegintime != null">
+        TeachingTimeBeginTime,
+      </if>
+      <if test="teachingtimeendtime != null">
+        TeachingTimeEndTime,
+      </if>
+      <if test="selectclassstudentid != null">
+        SelectClassStudentId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="classid != null">
+        #{classid,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourttitle != null">
+        #{badmintoncourttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="classtype != null">
+        #{classtype,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null">
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="classstartdate != null">
+        #{classstartdate,jdbcType=DATE},
+      </if>
+      <if test="classenddate != null">
+        #{classenddate,jdbcType=DATE},
+      </if>
+      <if test="classweek != null">
+        #{classweek,jdbcType=VARCHAR},
+      </if>
+      <if test="coachid != null">
+        #{coachid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachname != null">
+        #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtid != null">
+        #{badmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimeid != null">
+        #{teachingtimeid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimebegintime != null">
+        #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null">
+        #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+      <if test="selectclassstudentid != null">
+        #{selectclassstudentid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectByid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select *
+    from studentclassFinal
+    where selectclassstudentid = #{selectclassstudentid,jdbcType=VARCHAR}
+  </select>
+</mapper>

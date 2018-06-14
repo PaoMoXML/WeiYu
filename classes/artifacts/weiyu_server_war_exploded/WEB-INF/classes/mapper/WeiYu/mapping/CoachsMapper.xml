@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.CoachsMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.Coachs" >
+    <id column="CoachId" property="coachid" jdbcType="VARCHAR" />
+    <result column="CoachWechatNumber" property="coachwechatnumber" jdbcType="VARCHAR" />
+    <result column="CoachHeadPortrait" property="coachheadportrait" jdbcType="VARCHAR" />
+    <result column="CoachName" property="coachname" jdbcType="VARCHAR" />
+    <result column="CoachPhone" property="coachphone" jdbcType="VARCHAR" />
+    <result column="CoachPassword" property="coachpassword" jdbcType="VARCHAR" />
+    <result column="CoachSex" property="coachsex" jdbcType="VARCHAR" />
+    <result column="CoachIDNumber" property="coachidnumber" jdbcType="VARCHAR" />
+    <result column="CoachCompany" property="coachcompany" jdbcType="VARCHAR" />
+    <result column="CoachAddress" property="coachaddress" jdbcType="VARCHAR" />
+    <result column="CoachTechnicalLevel" property="coachtechnicallevel" jdbcType="VARCHAR" />
+    <result column="CoachAccountOpeningBank" property="coachaccountopeningbank" jdbcType="VARCHAR" />
+    <result column="CoachBankCodeofCNAPS" property="coachbankcodeofcnaps" jdbcType="VARCHAR" />
+    <result column="CoachBankCardNumber" property="coachbankcardnumber" jdbcType="VARCHAR" />
+    <result column="CoachIDPositivePhotoPreservationPath" property="coachidpositivephotopreservationpath" jdbcType="VARCHAR" />
+    <result column="CoachIDBackPhotoPreservationPath" property="coachidbackphotopreservationpath" jdbcType="VARCHAR" />
+    <result column="CoachSitesStandbyone" property="coachsitesstandbyone" jdbcType="VARCHAR" />
+    <result column="CoachSitesStandbytwo" property="coachsitesstandbytwo" jdbcType="VARCHAR" />
+    <result column="CoachStatus" property="coachstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CoachId, CoachWechatNumber, CoachHeadPortrait, CoachName, CoachPhone, CoachPassword, 
+    CoachSex, CoachIDNumber, CoachCompany, CoachAddress, CoachTechnicalLevel, CoachAccountOpeningBank, 
+    CoachBankCodeofCNAPS, CoachBankCardNumber, CoachIDPositivePhotoPreservationPath, 
+    CoachIDBackPhotoPreservationPath, CoachSitesStandbyone, CoachSitesStandbytwo, CoachStatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Coachs
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Coachs
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.Coachs" >
+    insert into Coachs (CoachId, CoachWechatNumber, CoachHeadPortrait, 
+      CoachName, CoachPhone, CoachPassword, 
+      CoachSex, CoachIDNumber, CoachCompany, 
+      CoachAddress, CoachTechnicalLevel, CoachAccountOpeningBank, 
+      CoachBankCodeofCNAPS, CoachBankCardNumber, 
+      CoachIDPositivePhotoPreservationPath, CoachIDBackPhotoPreservationPath, 
+      CoachSitesStandbyone, CoachSitesStandbytwo, 
+      CoachStatus)
+    values (#{coachid,jdbcType=VARCHAR}, #{coachwechatnumber,jdbcType=VARCHAR}, #{coachheadportrait,jdbcType=VARCHAR}, 
+      #{coachname,jdbcType=VARCHAR}, #{coachphone,jdbcType=VARCHAR}, #{coachpassword,jdbcType=VARCHAR}, 
+      #{coachsex,jdbcType=VARCHAR}, #{coachidnumber,jdbcType=VARCHAR}, #{coachcompany,jdbcType=VARCHAR}, 
+      #{coachaddress,jdbcType=VARCHAR}, #{coachtechnicallevel,jdbcType=VARCHAR}, #{coachaccountopeningbank,jdbcType=VARCHAR}, 
+      #{coachbankcodeofcnaps,jdbcType=VARCHAR}, #{coachbankcardnumber,jdbcType=VARCHAR}, 
+      #{coachidpositivephotopreservationpath,jdbcType=VARCHAR}, #{coachidbackphotopreservationpath,jdbcType=VARCHAR}, 
+      #{coachsitesstandbyone,jdbcType=VARCHAR}, #{coachsitesstandbytwo,jdbcType=VARCHAR}, 
+      #{coachstatus,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.Coachs" >
+    insert into Coachs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coachid != null" >
+        CoachId,
+      </if>
+      <if test="coachwechatnumber != null" >
+        CoachWechatNumber,
+      </if>
+      <if test="coachheadportrait != null" >
+        CoachHeadPortrait,
+      </if>
+      <if test="coachname != null" >
+        CoachName,
+      </if>
+      <if test="coachphone != null" >
+        CoachPhone,
+      </if>
+      <if test="coachpassword != null" >
+        CoachPassword,
+      </if>
+      <if test="coachsex != null" >
+        CoachSex,
+      </if>
+      <if test="coachidnumber != null" >
+        CoachIDNumber,
+      </if>
+      <if test="coachcompany != null" >
+        CoachCompany,
+      </if>
+      <if test="coachaddress != null" >
+        CoachAddress,
+      </if>
+      <if test="coachtechnicallevel != null" >
+        CoachTechnicalLevel,
+      </if>
+      <if test="coachaccountopeningbank != null" >
+        CoachAccountOpeningBank,
+      </if>
+      <if test="coachbankcodeofcnaps != null" >
+        CoachBankCodeofCNAPS,
+      </if>
+      <if test="coachbankcardnumber != null" >
+        CoachBankCardNumber,
+      </if>
+      <if test="coachidpositivephotopreservationpath != null" >
+        CoachIDPositivePhotoPreservationPath,
+      </if>
+      <if test="coachidbackphotopreservationpath != null" >
+        CoachIDBackPhotoPreservationPath,
+      </if>
+      <if test="coachsitesstandbyone != null" >
+        CoachSitesStandbyone,
+      </if>
+      <if test="coachsitesstandbytwo != null" >
+        CoachSitesStandbytwo,
+      </if>
+      <if test="coachstatus != null" >
+        CoachStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coachid != null" >
+        #{coachid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachwechatnumber != null" >
+        #{coachwechatnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="coachheadportrait != null" >
+        #{coachheadportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="coachname != null" >
+        #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="coachphone != null" >
+        #{coachphone,jdbcType=VARCHAR},
+      </if>
+      <if test="coachpassword != null" >
+        #{coachpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="coachsex != null" >
+        #{coachsex,jdbcType=VARCHAR},
+      </if>
+      <if test="coachidnumber != null" >
+        #{coachidnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="coachcompany != null" >
+        #{coachcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="coachaddress != null" >
+        #{coachaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="coachtechnicallevel != null" >
+        #{coachtechnicallevel,jdbcType=VARCHAR},
+      </if>
+      <if test="coachaccountopeningbank != null" >
+        #{coachaccountopeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="coachbankcodeofcnaps != null" >
+        #{coachbankcodeofcnaps,jdbcType=VARCHAR},
+      </if>
+      <if test="coachbankcardnumber != null" >
+        #{coachbankcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="coachidpositivephotopreservationpath != null" >
+        #{coachidpositivephotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="coachidbackphotopreservationpath != null" >
+        #{coachidbackphotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="coachsitesstandbyone != null" >
+        #{coachsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="coachsitesstandbytwo != null" >
+        #{coachsitesstandbytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="coachstatus != null" >
+        #{coachstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.Coachs" >
+    update Coachs
+    <set >
+      <if test="coachwechatnumber != null" >
+        CoachWechatNumber = #{coachwechatnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="coachheadportrait != null" >
+        CoachHeadPortrait = #{coachheadportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="coachname != null" >
+        CoachName = #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="coachphone != null" >
+        CoachPhone = #{coachphone,jdbcType=VARCHAR},
+      </if>
+      <if test="coachpassword != null" >
+        CoachPassword = #{coachpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="coachsex != null" >
+        CoachSex = #{coachsex,jdbcType=VARCHAR},
+      </if>
+      <if test="coachidnumber != null" >
+        CoachIDNumber = #{coachidnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="coachcompany != null" >
+        CoachCompany = #{coachcompany,jdbcType=VARCHAR},
+      </if>
+      <if test="coachaddress != null" >
+        CoachAddress = #{coachaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="coachtechnicallevel != null" >
+        CoachTechnicalLevel = #{coachtechnicallevel,jdbcType=VARCHAR},
+      </if>
+      <if test="coachaccountopeningbank != null" >
+        CoachAccountOpeningBank = #{coachaccountopeningbank,jdbcType=VARCHAR},
+      </if>
+      <if test="coachbankcodeofcnaps != null" >
+        CoachBankCodeofCNAPS = #{coachbankcodeofcnaps,jdbcType=VARCHAR},
+      </if>
+      <if test="coachbankcardnumber != null" >
+        CoachBankCardNumber = #{coachbankcardnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="coachidpositivephotopreservationpath != null" >
+        CoachIDPositivePhotoPreservationPath = #{coachidpositivephotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="coachidbackphotopreservationpath != null" >
+        CoachIDBackPhotoPreservationPath = #{coachidbackphotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="coachsitesstandbyone != null" >
+        CoachSitesStandbyone = #{coachsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="coachsitesstandbytwo != null" >
+        CoachSitesStandbytwo = #{coachsitesstandbytwo,jdbcType=VARCHAR},
+      </if>
+      <if test="coachstatus != null" >
+        CoachStatus = #{coachstatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.Coachs" >
+    update Coachs
+    set CoachWechatNumber = #{coachwechatnumber,jdbcType=VARCHAR},
+      CoachHeadPortrait = #{coachheadportrait,jdbcType=VARCHAR},
+      CoachName = #{coachname,jdbcType=VARCHAR},
+      CoachPhone = #{coachphone,jdbcType=VARCHAR},
+      CoachPassword = #{coachpassword,jdbcType=VARCHAR},
+      CoachSex = #{coachsex,jdbcType=VARCHAR},
+      CoachIDNumber = #{coachidnumber,jdbcType=VARCHAR},
+      CoachCompany = #{coachcompany,jdbcType=VARCHAR},
+      CoachAddress = #{coachaddress,jdbcType=VARCHAR},
+      CoachTechnicalLevel = #{coachtechnicallevel,jdbcType=VARCHAR},
+      CoachAccountOpeningBank = #{coachaccountopeningbank,jdbcType=VARCHAR},
+      CoachBankCodeofCNAPS = #{coachbankcodeofcnaps,jdbcType=VARCHAR},
+      CoachBankCardNumber = #{coachbankcardnumber,jdbcType=VARCHAR},
+      CoachIDPositivePhotoPreservationPath = #{coachidpositivephotopreservationpath,jdbcType=VARCHAR},
+      CoachIDBackPhotoPreservationPath = #{coachidbackphotopreservationpath,jdbcType=VARCHAR},
+      CoachSitesStandbyone = #{coachsitesstandbyone,jdbcType=VARCHAR},
+      CoachSitesStandbytwo = #{coachsitesstandbytwo,jdbcType=VARCHAR},
+      CoachStatus = #{coachstatus,jdbcType=VARCHAR}
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </update>
+
+
+  <select id="selectAP" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from Coachs
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+    AND  CoachPassword = #{coachpassword,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectA" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select *
+    from Coachs
+    where CoachId = #{coachid,jdbcType=VARCHAR}
+  </select>
+
+
+</mapper>

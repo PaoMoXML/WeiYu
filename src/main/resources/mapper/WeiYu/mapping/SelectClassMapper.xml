@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.SelectClassMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.SelectClass" >
+    <id column="SelectClassId" property="selectclassid" jdbcType="VARCHAR" />
+    <result column="SelectClassStudentId" property="selectclassstudentid" jdbcType="VARCHAR" />
+    <result column="SelectClassClassId" property="selectclassclassid" jdbcType="VARCHAR" />
+    <result column="SelectClassType" property="selectclasstype" jdbcType="VARCHAR" />
+    <result column="ClassBadmintonCourtId" property="classbadmintoncourtid" jdbcType="VARCHAR" />
+    <result column="ClassBadmintonSitesId" property="classbadmintonsitesid" jdbcType="VARCHAR" />
+    <result column="Classweek" property="classweek" jdbcType="VARCHAR" />
+    <result column="ClassTeachingTime" property="classteachingtime" jdbcType="VARCHAR" />
+    <result column="SelectClassAdministratorId" property="selectclassadministratorid" jdbcType="VARCHAR" />
+    <result column="SelectClassFilingDate" property="selectclassfilingdate" jdbcType="DATE" />
+    <result column="SelectClassApprovalDate" property="selectclassapprovaldate" jdbcType="DATE" />
+    <result column="SelectClassPausedDate" property="selectclasspauseddate" jdbcType="DATE" />
+    <result column="SelectClassEndDate" property="selectclassenddate" jdbcType="DATE" />
+    <result column="SelectClassState" property="selectclassstate" jdbcType="VARCHAR" />
+    <result column="SelectClassStandbyone" property="selectclassstandbyone" jdbcType="VARCHAR" />
+    <result column="SelectClassStandbytwo" property="selectclassstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SelectClassId, SelectClassStudentId, SelectClassClassId, SelectClassType, ClassBadmintonCourtId, 
+    ClassBadmintonSitesId, Classweek, ClassTeachingTime, SelectClassAdministratorId, 
+    SelectClassFilingDate, SelectClassApprovalDate, SelectClassPausedDate, SelectClassEndDate, 
+    SelectClassState, SelectClassStandbyone, SelectClassStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SelectClass
+    where SelectClassId = #{selectclassid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SelectClass
+    where SelectClassId = #{selectclassid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.SelectClass" >
+    insert into SelectClass (SelectClassId, SelectClassStudentId, 
+      SelectClassClassId, SelectClassType, ClassBadmintonCourtId, 
+      ClassBadmintonSitesId, Classweek, ClassTeachingTime, 
+      SelectClassAdministratorId, SelectClassFilingDate, 
+      SelectClassApprovalDate, SelectClassPausedDate, 
+      SelectClassEndDate, SelectClassState, SelectClassStandbyone, 
+      SelectClassStandbytwo)
+    values (#{selectclassid,jdbcType=VARCHAR}, #{selectclassstudentid,jdbcType=VARCHAR}, 
+      #{selectclassclassid,jdbcType=VARCHAR}, #{selectclasstype,jdbcType=VARCHAR}, #{classbadmintoncourtid,jdbcType=VARCHAR}, 
+      #{classbadmintonsitesid,jdbcType=VARCHAR}, #{classweek,jdbcType=VARCHAR}, #{classteachingtime,jdbcType=VARCHAR}, 
+      #{selectclassadministratorid,jdbcType=VARCHAR}, #{selectclassfilingdate,jdbcType=DATE}, 
+      #{selectclassapprovaldate,jdbcType=DATE}, #{selectclasspauseddate,jdbcType=DATE}, 
+      #{selectclassenddate,jdbcType=DATE}, #{selectclassstate,jdbcType=VARCHAR}, #{selectclassstandbyone,jdbcType=VARCHAR}, 
+      #{selectclassstandbytwo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.SelectClass" >
+    insert into SelectClass
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="selectclassid != null" >
+        SelectClassId,
+      </if>
+      <if test="selectclassstudentid != null" >
+        SelectClassStudentId,
+      </if>
+      <if test="selectclassclassid != null" >
+        SelectClassClassId,
+      </if>
+      <if test="selectclasstype != null" >
+        SelectClassType,
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        ClassBadmintonCourtId,
+      </if>
+      <if test="classbadmintonsitesid != null" >
+        ClassBadmintonSitesId,
+      </if>
+      <if test="classweek != null" >
+        Classweek,
+      </if>
+      <if test="classteachingtime != null" >
+        ClassTeachingTime,
+      </if>
+      <if test="selectclassadministratorid != null" >
+        SelectClassAdministratorId,
+      </if>
+      <if test="selectclassfilingdate != null" >
+        SelectClassFilingDate,
+      </if>
+      <if test="selectclassapprovaldate != null" >
+        SelectClassApprovalDate,
+      </if>
+      <if test="selectclasspauseddate != null" >
+        SelectClassPausedDate,
+      </if>
+      <if test="selectclassenddate != null" >
+        SelectClassEndDate,
+      </if>
+      <if test="selectclassstate != null" >
+        SelectClassState,
+      </if>
+      <if test="selectclassstandbyone != null" >
+        SelectClassStandbyone,
+      </if>
+      <if test="selectclassstandbytwo != null" >
+        SelectClassStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="selectclassid != null" >
+        #{selectclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstudentid != null" >
+        #{selectclassstudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassclassid != null" >
+        #{selectclassclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclasstype != null" >
+        #{selectclasstype,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        #{classbadmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintonsitesid != null" >
+        #{classbadmintonsitesid,jdbcType=VARCHAR},
+      </if>
+      <if test="classweek != null" >
+        #{classweek,jdbcType=VARCHAR},
+      </if>
+      <if test="classteachingtime != null" >
+        #{classteachingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassadministratorid != null" >
+        #{selectclassadministratorid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassfilingdate != null" >
+        #{selectclassfilingdate,jdbcType=DATE},
+      </if>
+      <if test="selectclassapprovaldate != null" >
+        #{selectclassapprovaldate,jdbcType=DATE},
+      </if>
+      <if test="selectclasspauseddate != null" >
+        #{selectclasspauseddate,jdbcType=DATE},
+      </if>
+      <if test="selectclassenddate != null" >
+        #{selectclassenddate,jdbcType=DATE},
+      </if>
+      <if test="selectclassstate != null" >
+        #{selectclassstate,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstandbyone != null" >
+        #{selectclassstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstandbytwo != null" >
+        #{selectclassstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.SelectClass" >
+    update SelectClass
+    <set >
+      <if test="selectclassstudentid != null" >
+        SelectClassStudentId = #{selectclassstudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassclassid != null" >
+        SelectClassClassId = #{selectclassclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclasstype != null" >
+        SelectClassType = #{selectclasstype,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        ClassBadmintonCourtId = #{classbadmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintonsitesid != null" >
+        ClassBadmintonSitesId = #{classbadmintonsitesid,jdbcType=VARCHAR},
+      </if>
+      <if test="classweek != null" >
+        Classweek = #{classweek,jdbcType=VARCHAR},
+      </if>
+      <if test="classteachingtime != null" >
+        ClassTeachingTime = #{classteachingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassadministratorid != null" >
+        SelectClassAdministratorId = #{selectclassadministratorid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassfilingdate != null" >
+        SelectClassFilingDate = #{selectclassfilingdate,jdbcType=DATE},
+      </if>
+      <if test="selectclassapprovaldate != null" >
+        SelectClassApprovalDate = #{selectclassapprovaldate,jdbcType=DATE},
+      </if>
+      <if test="selectclasspauseddate != null" >
+        SelectClassPausedDate = #{selectclasspauseddate,jdbcType=DATE},
+      </if>
+      <if test="selectclassenddate != null" >
+        SelectClassEndDate = #{selectclassenddate,jdbcType=DATE},
+      </if>
+      <if test="selectclassstate != null" >
+        SelectClassState = #{selectclassstate,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstandbyone != null" >
+        SelectClassStandbyone = #{selectclassstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstandbytwo != null" >
+        SelectClassStandbytwo = #{selectclassstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SelectClassId = #{selectclassid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.SelectClass" >
+    update SelectClass
+    set SelectClassStudentId = #{selectclassstudentid,jdbcType=VARCHAR},
+      SelectClassClassId = #{selectclassclassid,jdbcType=VARCHAR},
+      SelectClassType = #{selectclasstype,jdbcType=VARCHAR},
+      ClassBadmintonCourtId = #{classbadmintoncourtid,jdbcType=VARCHAR},
+      ClassBadmintonSitesId = #{classbadmintonsitesid,jdbcType=VARCHAR},
+      Classweek = #{classweek,jdbcType=VARCHAR},
+      ClassTeachingTime = #{classteachingtime,jdbcType=VARCHAR},
+      SelectClassAdministratorId = #{selectclassadministratorid,jdbcType=VARCHAR},
+      SelectClassFilingDate = #{selectclassfilingdate,jdbcType=DATE},
+      SelectClassApprovalDate = #{selectclassapprovaldate,jdbcType=DATE},
+      SelectClassPausedDate = #{selectclasspauseddate,jdbcType=DATE},
+      SelectClassEndDate = #{selectclassenddate,jdbcType=DATE},
+      SelectClassState = #{selectclassstate,jdbcType=VARCHAR},
+      SelectClassStandbyone = #{selectclassstandbyone,jdbcType=VARCHAR},
+      SelectClassStandbytwo = #{selectclassstandbytwo,jdbcType=INTEGER}
+    where SelectClassId = #{selectclassid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByOther" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.SelectClass" >
+    select*
+    from SelectClass
+    <where>
+      <if test="selectclassstudentid != null">
+        SelectClassStudentId = #{selectclassstudentid}
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        AND ClassBadmintonCourtId like #{classbadmintoncourtid}
+      </if>
+      <if test="selectclasstype != null">
+        AND SelectClassType like #{selectclasstype}
+      </if>
+      <if test="classteachingtime != null">
+        AND ClassTeachingTime like #{classteachingtime}
+      </if>
+      <if test="classweek != null">
+        AND Classweek like #{classweek}
+      </if>
+    </where>
+  </select>
+</mapper>

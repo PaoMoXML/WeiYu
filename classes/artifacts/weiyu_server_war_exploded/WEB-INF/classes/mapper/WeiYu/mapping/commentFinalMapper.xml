@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.commentFinalMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.commentFinal" >
+    <result column="ClassName" property="classname" jdbcType="VARCHAR" />
+    <result column="TeachingTimeBeginTime" property="teachingtimebegintime" jdbcType="TIME" />
+    <result column="TeachingTimeEndTime" property="teachingtimeendtime" jdbcType="TIME" />
+    <result column="CoachName" property="coachname" jdbcType="VARCHAR" />
+    <result column="replaceCoachName" property="replacecoachname" jdbcType="VARCHAR" />
+    <result column="SignInForClassCoachState" property="signinforclasscoachstate" jdbcType="CHAR" />
+    <result column="TraniningDate" property="traniningdate" jdbcType="DATE" />
+    <result column="SelectClassStudentId" property="selectclassstudentid" jdbcType="VARCHAR" />
+    <result column="TrainingId" property="trainingid" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.commentFinal" >
+    insert into commentFinal (ClassName, TeachingTimeBeginTime, TeachingTimeEndTime, 
+      CoachName, replaceCoachName, SignInForClassCoachState, 
+      TraniningDate, SelectClassStudentId, TrainingId
+      )
+    values (#{classname,jdbcType=VARCHAR}, #{teachingtimebegintime,jdbcType=TIME}, #{teachingtimeendtime,jdbcType=TIME}, 
+      #{coachname,jdbcType=VARCHAR}, #{replacecoachname,jdbcType=VARCHAR}, #{signinforclasscoachstate,jdbcType=CHAR}, 
+      #{traniningdate,jdbcType=DATE}, #{selectclassstudentid,jdbcType=VARCHAR}, #{trainingid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.commentFinal" >
+    insert into commentFinal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classname != null" >
+        ClassName,
+      </if>
+      <if test="teachingtimebegintime != null" >
+        TeachingTimeBeginTime,
+      </if>
+      <if test="teachingtimeendtime != null" >
+        TeachingTimeEndTime,
+      </if>
+      <if test="coachname != null" >
+        CoachName,
+      </if>
+      <if test="replacecoachname != null" >
+        replaceCoachName,
+      </if>
+      <if test="signinforclasscoachstate != null" >
+        SignInForClassCoachState,
+      </if>
+      <if test="traniningdate != null" >
+        TraniningDate,
+      </if>
+      <if test="selectclassstudentid != null" >
+        SelectClassStudentId,
+      </if>
+      <if test="trainingid != null" >
+        TrainingId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimebegintime != null" >
+        #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null" >
+        #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+      <if test="coachname != null" >
+        #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="replacecoachname != null" >
+        #{replacecoachname,jdbcType=VARCHAR},
+      </if>
+      <if test="signinforclasscoachstate != null" >
+        #{signinforclasscoachstate,jdbcType=CHAR},
+      </if>
+      <if test="traniningdate != null" >
+        #{traniningdate,jdbcType=DATE},
+      </if>
+      <if test="selectclassstudentid != null" >
+        #{selectclassstudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingid != null" >
+        #{trainingid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+    <select id="select" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.commentFinal" >
+        select *
+        from commentFinal
+        where  TraniningDate =  #{traniningdate,jdbcType=DATE}
+        AND SelectClassStudentId = #{selectclassstudentid,jdbcType=VARCHAR}
+    </select>
+</mapper>

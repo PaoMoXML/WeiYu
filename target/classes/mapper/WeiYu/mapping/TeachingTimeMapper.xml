@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.TeachingTimeMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.TeachingTime" >
+    <id column="TeachingTimeId" property="teachingtimeid" jdbcType="VARCHAR" />
+    <result column="TeachingTimeDescribe" property="teachingtimedescribe" jdbcType="VARCHAR" />
+    <result column="TeachingTimeWeek" property="teachingtimeweek" jdbcType="CHAR" />
+    <result column="TeachingTimeBeginTime" property="teachingtimebegintime" jdbcType="TIME" />
+    <result column="TeachingTimeEndTime" property="teachingtimeendtime" jdbcType="TIME" />
+    <result column="TeachingTimeStandbyone" property="teachingtimestandbyone" jdbcType="VARCHAR" />
+    <result column="TeachingTimeStandbytwo" property="teachingtimestandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+
+  <resultMap id="TimeMap" type="io.renren.modules.WeiYu.model.Time" >
+    <result column="TeachingTimeBeginTime" property="teachingtimebegintime" jdbcType="TIME" />
+    <result column="TeachingTimeEndTime" property="teachingtimeendtime" jdbcType="TIME" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    TeachingTimeId, TeachingTimeDescribe, TeachingTimeWeek, TeachingTimeBeginTime, TeachingTimeEndTime, 
+    TeachingTimeStandbyone, TeachingTimeStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from TeachingTime
+    where TeachingTimeId = #{teachingtimeid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from TeachingTime
+    where TeachingTimeId = #{teachingtimeid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.TeachingTime" >
+    insert into TeachingTime (TeachingTimeId, TeachingTimeDescribe, 
+      TeachingTimeWeek, TeachingTimeBeginTime, TeachingTimeEndTime, 
+      TeachingTimeStandbyone, TeachingTimeStandbytwo
+      )
+    values (#{teachingtimeid,jdbcType=VARCHAR}, #{teachingtimedescribe,jdbcType=VARCHAR}, 
+      #{teachingtimeweek,jdbcType=CHAR}, #{teachingtimebegintime,jdbcType=TIME}, #{teachingtimeendtime,jdbcType=TIME}, 
+      #{teachingtimestandbyone,jdbcType=VARCHAR}, #{teachingtimestandbytwo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.TeachingTime" >
+    insert into TeachingTime
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="teachingtimeid != null" >
+        TeachingTimeId,
+      </if>
+      <if test="teachingtimedescribe != null" >
+        TeachingTimeDescribe,
+      </if>
+      <if test="teachingtimeweek != null" >
+        TeachingTimeWeek,
+      </if>
+      <if test="teachingtimebegintime != null" >
+        TeachingTimeBeginTime,
+      </if>
+      <if test="teachingtimeendtime != null" >
+        TeachingTimeEndTime,
+      </if>
+      <if test="teachingtimestandbyone != null" >
+        TeachingTimeStandbyone,
+      </if>
+      <if test="teachingtimestandbytwo != null" >
+        TeachingTimeStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="teachingtimeid != null" >
+        #{teachingtimeid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimedescribe != null" >
+        #{teachingtimedescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimeweek != null" >
+        #{teachingtimeweek,jdbcType=CHAR},
+      </if>
+      <if test="teachingtimebegintime != null" >
+        #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null" >
+        #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimestandbyone != null" >
+        #{teachingtimestandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimestandbytwo != null" >
+        #{teachingtimestandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.TeachingTime" >
+    update TeachingTime
+    <set >
+      <if test="teachingtimedescribe != null" >
+        TeachingTimeDescribe = #{teachingtimedescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimeweek != null" >
+        TeachingTimeWeek = #{teachingtimeweek,jdbcType=CHAR},
+      </if>
+      <if test="teachingtimebegintime != null" >
+        TeachingTimeBeginTime = #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null" >
+        TeachingTimeEndTime = #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimestandbyone != null" >
+        TeachingTimeStandbyone = #{teachingtimestandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimestandbytwo != null" >
+        TeachingTimeStandbytwo = #{teachingtimestandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where TeachingTimeId = #{teachingtimeid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.TeachingTime" >
+    update TeachingTime
+    set TeachingTimeDescribe = #{teachingtimedescribe,jdbcType=VARCHAR},
+      TeachingTimeWeek = #{teachingtimeweek,jdbcType=CHAR},
+      TeachingTimeBeginTime = #{teachingtimebegintime,jdbcType=TIME},
+      TeachingTimeEndTime = #{teachingtimeendtime,jdbcType=TIME},
+      TeachingTimeStandbyone = #{teachingtimestandbyone,jdbcType=VARCHAR},
+      TeachingTimeStandbytwo = #{teachingtimestandbytwo,jdbcType=INTEGER}
+    where TeachingTimeId = #{teachingtimeid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectalltime" resultMap="TimeMap" >
+    select distinct
+    TeachingTimeBeginTime,TeachingTimeEndTime,TeachingTimeId
+    from TeachingTime
+  </select>
+
+  <select id="selectBywd" resultMap="TimeMap" >
+    select
+    TeachingTimeBeginTime,TeachingTimeEndTime,TeachingTimeId
+    from TeachingTime
+    where  TeachingTimeWeek = #{teachingtimeweek,jdbcType=CHAR}
+    AND TeachingTimeDescribe = #{teachingtimedescribe,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.allkeshiMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.allkeshi" >
+    <result column="StudentAccountId" property="studentaccountid" jdbcType="VARCHAR" />
+    <result column="allkeshi" property="allkeshi" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.allkeshi" >
+    insert into allkeshi (StudentAccountId, allkeshi)
+    values (#{studentaccountid,jdbcType=VARCHAR}, #{allkeshi,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.allkeshi" >
+    insert into allkeshi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentaccountid != null" >
+        StudentAccountId,
+      </if>
+      <if test="allkeshi != null" >
+        allkeshi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentaccountid != null" >
+        #{studentaccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="allkeshi != null" >
+        #{allkeshi,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectByid" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.allkeshi" >
+    select *
+    from allkeshi
+    where StudentAccountId =  #{studentaccountid,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.StudentUpdateMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.StudentUpdate" >
+    <result column="StudentId" property="studentid" jdbcType="VARCHAR" />
+    <result column="StudentName" property="studentname" jdbcType="VARCHAR" />
+    <result column="StudentNickName" property="studentnickname" jdbcType="VARCHAR" />
+    <result column="StudentMotherName" property="studentmothername" jdbcType="VARCHAR" />
+    <result column="StudentMotherPhone" property="studentmotherphone" jdbcType="VARCHAR" />
+    <result column="StudentFatherName" property="studentfathername" jdbcType="VARCHAR" />
+    <result column="StudentFatherPhone" property="studentfatherphone" jdbcType="VARCHAR" />
+    <result column="StudentHomeAddressOne" property="studenthomeaddressone" jdbcType="VARCHAR" />
+    <result column="StudentPhone" property="studentphone" jdbcType="VARCHAR" />
+    <result column="StudentSex" property="studentsex" jdbcType="VARCHAR" />
+    <result column="StudentIDNumber" property="studentidnumber" jdbcType="VARCHAR" />
+    <result column="StudentSchool" property="studentschool" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.StudentUpdate" >
+    insert into StudentUpdate (StudentId, StudentName, StudentNickName, 
+      StudentMotherName, StudentMotherPhone, 
+      StudentFatherName, StudentFatherPhone, 
+      StudentHomeAddressOne, StudentPhone, StudentSex, 
+      StudentIDNumber, StudentSchool)
+    values (#{studentid,jdbcType=VARCHAR}, #{studentname,jdbcType=VARCHAR}, #{studentnickname,jdbcType=VARCHAR}, 
+      #{studentmothername,jdbcType=VARCHAR}, #{studentmotherphone,jdbcType=VARCHAR}, 
+      #{studentfathername,jdbcType=VARCHAR}, #{studentfatherphone,jdbcType=VARCHAR}, 
+      #{studenthomeaddressone,jdbcType=VARCHAR}, #{studentphone,jdbcType=VARCHAR}, #{studentsex,jdbcType=VARCHAR}, 
+      #{studentidnumber,jdbcType=VARCHAR}, #{studentschool,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.StudentUpdate" >
+    insert into StudentUpdate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        StudentId,
+      </if>
+      <if test="studentname != null" >
+        StudentName,
+      </if>
+      <if test="studentnickname != null" >
+        StudentNickName,
+      </if>
+      <if test="studentmothername != null" >
+        StudentMotherName,
+      </if>
+      <if test="studentmotherphone != null" >
+        StudentMotherPhone,
+      </if>
+      <if test="studentfathername != null" >
+        StudentFatherName,
+      </if>
+      <if test="studentfatherphone != null" >
+        StudentFatherPhone,
+      </if>
+      <if test="studenthomeaddressone != null" >
+        StudentHomeAddressOne,
+      </if>
+      <if test="studentphone != null" >
+        StudentPhone,
+      </if>
+      <if test="studentsex != null" >
+        StudentSex,
+      </if>
+      <if test="studentidnumber != null" >
+        StudentIDNumber,
+      </if>
+      <if test="studentschool != null" >
+        StudentSchool,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentname != null" >
+        #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentnickname != null" >
+        #{studentnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentmothername != null" >
+        #{studentmothername,jdbcType=VARCHAR},
+      </if>
+      <if test="studentmotherphone != null" >
+        #{studentmotherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentfathername != null" >
+        #{studentfathername,jdbcType=VARCHAR},
+      </if>
+      <if test="studentfatherphone != null" >
+        #{studentfatherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthomeaddressone != null" >
+        #{studenthomeaddressone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentphone != null" >
+        #{studentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsex != null" >
+        #{studentsex,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidnumber != null" >
+        #{studentidnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschool != null" >
+        #{studentschool,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateBystudentid" parameterType="io.renren.modules.WeiYu.model.Students" >
+    update Students
+    set
+    StudentName = #{studentname,jdbcType=VARCHAR},
+    StudentNickName = #{studentnickname,jdbcType=VARCHAR},
+    StudentSex = #{studentsex,jdbcType=VARCHAR},
+    StudentIDNumber = #{studentidnumber,jdbcType=VARCHAR},
+    StudentPhone = #{studentphone,jdbcType=VARCHAR},
+    StudentSchool = #{studentschool,jdbcType=VARCHAR},
+    StudentHomeAddressOne = #{studenthomeaddressone,jdbcType=VARCHAR},
+    StudentFatherName = #{studentfathername,jdbcType=VARCHAR},
+    StudentFatherPhone = #{studentfatherphone,jdbcType=VARCHAR},
+    StudentMotherName = #{studentmothername,jdbcType=VARCHAR},
+    StudentMotherPhone = #{studentmotherphone,jdbcType=VARCHAR}
+    where StudentId = #{studentid,jdbcType=VARCHAR}
+  </update>
+
+<!--  <select id="selectBystudentid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from Students
+    where StudentId = #{studentid,jdbcType=VARCHAR}
+  </select>-->
+
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.coachLeaveMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.coachLeave" >
+    <result column="ClassName" property="classname" jdbcType="VARCHAR" />
+    <result column="TrainingId" property="trainingid" jdbcType="VARCHAR" />
+    <result column="TraniningDate" property="traniningdate" jdbcType="DATE" />
+    <result column="CoachId" property="coachid" jdbcType="VARCHAR" />
+    <result column="CoachLeave" property="coachleave" jdbcType="INTEGER" />
+    <result column="leaveReason" property="leavereason" jdbcType="VARCHAR" />
+    <result column="CoachLeaveStatus" property="coachleavestatus" jdbcType="CHAR" />
+    <result column="ReplaceCoachId" property="replacecoachid" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.coachLeave" >
+    insert into coachLeave (ClassName, TrainingId, TraniningDate, 
+      CoachId, CoachLeave, leaveReason, 
+      CoachLeaveStatus, ReplaceCoachId)
+    values (#{classname,jdbcType=VARCHAR}, #{trainingid,jdbcType=VARCHAR}, #{traniningdate,jdbcType=DATE}, 
+      #{coachid,jdbcType=VARCHAR}, #{coachleave,jdbcType=INTEGER}, #{leavereason,jdbcType=VARCHAR}, 
+      #{coachleavestatus,jdbcType=CHAR}, #{replacecoachid,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.coachLeave" >
+    insert into coachLeave
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classname != null" >
+        ClassName,
+      </if>
+      <if test="trainingid != null" >
+        TrainingId,
+      </if>
+      <if test="traniningdate != null" >
+        TraniningDate,
+      </if>
+      <if test="coachid != null" >
+        CoachId,
+      </if>
+      <if test="coachleave != null" >
+        CoachLeave,
+      </if>
+      <if test="leavereason != null" >
+        leaveReason,
+      </if>
+      <if test="coachleavestatus != null" >
+        CoachLeaveStatus,
+      </if>
+      <if test="replacecoachid != null" >
+        ReplaceCoachId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="trainingid != null" >
+        #{trainingid,jdbcType=VARCHAR},
+      </if>
+      <if test="traniningdate != null" >
+        #{traniningdate,jdbcType=DATE},
+      </if>
+      <if test="coachid != null" >
+        #{coachid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachleave != null" >
+        #{coachleave,jdbcType=INTEGER},
+      </if>
+      <if test="leavereason != null" >
+        #{leavereason,jdbcType=VARCHAR},
+      </if>
+      <if test="coachleavestatus != null" >
+        #{coachleavestatus,jdbcType=CHAR},
+      </if>
+      <if test="replacecoachid != null" >
+        #{replacecoachid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByidleave" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.coachLeave" >
+    select *
+    from coachLeave
+    where  CoachId = #{coachid,jdbcType=VARCHAR}
+    AND CoachLeave = #{coachleave,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByid" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.coachLeave" >
+    select *
+    from coachLeave
+    where  TrainingId =  #{trainingid,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByiddate" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.coachLeave" >
+    select *
+    from coachLeave
+    where  CoachId = #{coachid,jdbcType=VARCHAR}
+    AND TraniningDate = #{traniningdate,jdbcType=DATE}
+  </select>
+
+</mapper>

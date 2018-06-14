@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.BadmintonSitesMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.BadmintonSites" >
+    <id column="BadmintonCourtId" property="badmintoncourtid" jdbcType="VARCHAR" />
+    <id column="BadmintonSitesId" property="badmintonsitesid" jdbcType="VARCHAR" />
+    <result column="BadmintonSitesDescribe" property="badmintonsitesdescribe" jdbcType="VARCHAR" />
+    <result column="BadmintonSitesStandbyone" property="badmintonsitesstandbyone" jdbcType="VARCHAR" />
+    <result column="BadmintonSitesStandbytwo" property="badmintonsitesstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BadmintonCourtId, BadmintonSitesId, BadmintonSitesDescribe, BadmintonSitesStandbyone, 
+    BadmintonSitesStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.BadmintonSitesKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BadmintonSites
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+      and BadmintonSitesId = #{badmintonsitesid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.BadmintonSitesKey" >
+    delete from BadmintonSites
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+      and BadmintonSitesId = #{badmintonsitesid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.BadmintonSites" >
+    insert into BadmintonSites (BadmintonCourtId, BadmintonSitesId, 
+      BadmintonSitesDescribe, BadmintonSitesStandbyone, 
+      BadmintonSitesStandbytwo)
+    values (#{badmintoncourtid,jdbcType=VARCHAR}, #{badmintonsitesid,jdbcType=VARCHAR}, 
+      #{badmintonsitesdescribe,jdbcType=VARCHAR}, #{badmintonsitesstandbyone,jdbcType=VARCHAR}, 
+      #{badmintonsitesstandbytwo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.BadmintonSites" >
+    insert into BadmintonSites
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="badmintoncourtid != null" >
+        BadmintonCourtId,
+      </if>
+      <if test="badmintonsitesid != null" >
+        BadmintonSitesId,
+      </if>
+      <if test="badmintonsitesdescribe != null" >
+        BadmintonSitesDescribe,
+      </if>
+      <if test="badmintonsitesstandbyone != null" >
+        BadmintonSitesStandbyone,
+      </if>
+      <if test="badmintonsitesstandbytwo != null" >
+        BadmintonSitesStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="badmintoncourtid != null" >
+        #{badmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesid != null" >
+        #{badmintonsitesid,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesdescribe != null" >
+        #{badmintonsitesdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesstandbyone != null" >
+        #{badmintonsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesstandbytwo != null" >
+        #{badmintonsitesstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.BadmintonSites" >
+    update BadmintonSites
+    <set >
+      <if test="badmintonsitesdescribe != null" >
+        BadmintonSitesDescribe = #{badmintonsitesdescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesstandbyone != null" >
+        BadmintonSitesStandbyone = #{badmintonsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesstandbytwo != null" >
+        BadmintonSitesStandbytwo = #{badmintonsitesstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+      and BadmintonSitesId = #{badmintonsitesid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.BadmintonSites" >
+    update BadmintonSites
+    set BadmintonSitesDescribe = #{badmintonsitesdescribe,jdbcType=VARCHAR},
+      BadmintonSitesStandbyone = #{badmintonsitesstandbyone,jdbcType=VARCHAR},
+      BadmintonSitesStandbytwo = #{badmintonsitesstandbytwo,jdbcType=INTEGER}
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+      and BadmintonSitesId = #{badmintonsitesid,jdbcType=VARCHAR}
+  </update>
+</mapper>

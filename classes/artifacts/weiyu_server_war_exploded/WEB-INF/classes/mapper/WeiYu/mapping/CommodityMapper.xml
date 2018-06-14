@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.CommodityMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.Commodity" >
+    <id column="CommodityId" property="commodityid" jdbcType="VARCHAR" />
+    <result column="CommodityName" property="commodityname" jdbcType="VARCHAR" />
+    <result column="CommodityIntegralPrice" property="commodityintegralprice" jdbcType="INTEGER" />
+    <result column="CommodityStandbyone" property="commoditystandbyone" jdbcType="VARCHAR" />
+    <result column="CommodityStandbytwo" property="commoditystandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CommodityId, CommodityName, CommodityIntegralPrice, CommodityStandbyone, CommodityStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Commodity
+    where CommodityId = #{commodityid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Commodity
+    where CommodityId = #{commodityid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.Commodity" >
+    insert into Commodity (CommodityId, CommodityName, CommodityIntegralPrice, 
+      CommodityStandbyone, CommodityStandbytwo
+      )
+    values (#{commodityid,jdbcType=VARCHAR}, #{commodityname,jdbcType=VARCHAR}, #{commodityintegralprice,jdbcType=INTEGER}, 
+      #{commoditystandbyone,jdbcType=VARCHAR}, #{commoditystandbytwo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.Commodity" >
+    insert into Commodity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commodityid != null" >
+        CommodityId,
+      </if>
+      <if test="commodityname != null" >
+        CommodityName,
+      </if>
+      <if test="commodityintegralprice != null" >
+        CommodityIntegralPrice,
+      </if>
+      <if test="commoditystandbyone != null" >
+        CommodityStandbyone,
+      </if>
+      <if test="commoditystandbytwo != null" >
+        CommodityStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commodityid != null" >
+        #{commodityid,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null" >
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityintegralprice != null" >
+        #{commodityintegralprice,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystandbyone != null" >
+        #{commoditystandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditystandbytwo != null" >
+        #{commoditystandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.Commodity" >
+    update Commodity
+    <set >
+      <if test="commodityname != null" >
+        CommodityName = #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityintegralprice != null" >
+        CommodityIntegralPrice = #{commodityintegralprice,jdbcType=INTEGER},
+      </if>
+      <if test="commoditystandbyone != null" >
+        CommodityStandbyone = #{commoditystandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="commoditystandbytwo != null" >
+        CommodityStandbytwo = #{commoditystandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where CommodityId = #{commodityid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.Commodity" >
+    update Commodity
+    set CommodityName = #{commodityname,jdbcType=VARCHAR},
+      CommodityIntegralPrice = #{commodityintegralprice,jdbcType=INTEGER},
+      CommodityStandbyone = #{commoditystandbyone,jdbcType=VARCHAR},
+      CommodityStandbytwo = #{commoditystandbytwo,jdbcType=INTEGER}
+    where CommodityId = #{commodityid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.AdministratorMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.Administrator" >
+    <id column="AdministratorId" property="administratorid" jdbcType="VARCHAR" />
+    <result column="AdministratorName" property="administratorname" jdbcType="VARCHAR" />
+    <result column="AdministratorWechatNumber" property="administratorwechatnumber" jdbcType="VARCHAR" />
+    <result column="AdministratorHeadPortrait" property="administratorheadportrait" jdbcType="VARCHAR" />
+    <result column="AdministratorPhone" property="administratorphone" jdbcType="VARCHAR" />
+    <result column="AdministratorSex" property="administratorsex" jdbcType="VARCHAR" />
+    <result column="AdministratorStandbyone" property="administratorstandbyone" jdbcType="VARCHAR" />
+    <result column="AdministratorStandbytwo" property="administratorstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    AdministratorId, AdministratorName, AdministratorWechatNumber, AdministratorHeadPortrait, 
+    AdministratorPhone, AdministratorSex, AdministratorStandbyone, AdministratorStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Administrator
+    where AdministratorId = #{administratorid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Administrator
+    where AdministratorId = #{administratorid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.Administrator" >
+    insert into Administrator (AdministratorId, AdministratorName, 
+      AdministratorWechatNumber, AdministratorHeadPortrait, 
+      AdministratorPhone, AdministratorSex, AdministratorStandbyone, 
+      AdministratorStandbytwo)
+    values (#{administratorid,jdbcType=VARCHAR}, #{administratorname,jdbcType=VARCHAR}, 
+      #{administratorwechatnumber,jdbcType=VARCHAR}, #{administratorheadportrait,jdbcType=VARCHAR}, 
+      #{administratorphone,jdbcType=VARCHAR}, #{administratorsex,jdbcType=VARCHAR}, #{administratorstandbyone,jdbcType=VARCHAR}, 
+      #{administratorstandbytwo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.Administrator" >
+    insert into Administrator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="administratorid != null" >
+        AdministratorId,
+      </if>
+      <if test="administratorname != null" >
+        AdministratorName,
+      </if>
+      <if test="administratorwechatnumber != null" >
+        AdministratorWechatNumber,
+      </if>
+      <if test="administratorheadportrait != null" >
+        AdministratorHeadPortrait,
+      </if>
+      <if test="administratorphone != null" >
+        AdministratorPhone,
+      </if>
+      <if test="administratorsex != null" >
+        AdministratorSex,
+      </if>
+      <if test="administratorstandbyone != null" >
+        AdministratorStandbyone,
+      </if>
+      <if test="administratorstandbytwo != null" >
+        AdministratorStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="administratorid != null" >
+        #{administratorid,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorname != null" >
+        #{administratorname,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorwechatnumber != null" >
+        #{administratorwechatnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorheadportrait != null" >
+        #{administratorheadportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorphone != null" >
+        #{administratorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorsex != null" >
+        #{administratorsex,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorstandbyone != null" >
+        #{administratorstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorstandbytwo != null" >
+        #{administratorstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.Administrator" >
+    update Administrator
+    <set >
+      <if test="administratorname != null" >
+        AdministratorName = #{administratorname,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorwechatnumber != null" >
+        AdministratorWechatNumber = #{administratorwechatnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorheadportrait != null" >
+        AdministratorHeadPortrait = #{administratorheadportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorphone != null" >
+        AdministratorPhone = #{administratorphone,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorsex != null" >
+        AdministratorSex = #{administratorsex,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorstandbyone != null" >
+        AdministratorStandbyone = #{administratorstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="administratorstandbytwo != null" >
+        AdministratorStandbytwo = #{administratorstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where AdministratorId = #{administratorid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.Administrator" >
+    update Administrator
+    set AdministratorName = #{administratorname,jdbcType=VARCHAR},
+      AdministratorWechatNumber = #{administratorwechatnumber,jdbcType=VARCHAR},
+      AdministratorHeadPortrait = #{administratorheadportrait,jdbcType=VARCHAR},
+      AdministratorPhone = #{administratorphone,jdbcType=VARCHAR},
+      AdministratorSex = #{administratorsex,jdbcType=VARCHAR},
+      AdministratorStandbyone = #{administratorstandbyone,jdbcType=VARCHAR},
+      AdministratorStandbytwo = #{administratorstandbytwo,jdbcType=INTEGER}
+    where AdministratorId = #{administratorid,jdbcType=VARCHAR}
+  </update>
+</mapper>

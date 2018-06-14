@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.CoachNameMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.CoachName" >
+    <result column="CoachId" property="coachid" jdbcType="VARCHAR" />
+    <result column="CoachName" property="coachname" jdbcType="VARCHAR" />
+    <result column="CoachStatus" property="coachstatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.CoachName" >
+    insert into CoachName (CoachId, CoachName, CoachStatus
+      )
+    values (#{coachid,jdbcType=VARCHAR}, #{coachname,jdbcType=VARCHAR}, #{coachstatus,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.CoachName" >
+    insert into CoachName
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="coachid != null" >
+        CoachId,
+      </if>
+      <if test="coachname != null" >
+        CoachName,
+      </if>
+      <if test="coachstatus != null" >
+        CoachStatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="coachid != null" >
+        #{coachid,jdbcType=VARCHAR},
+      </if>
+      <if test="coachname != null" >
+        #{coachname,jdbcType=VARCHAR},
+      </if>
+      <if test="coachstatus != null" >
+        #{coachstatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByall" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.CoachName" >
+    select *
+    from CoachName
+    where  CoachStatus = "已通过"
+    AND CoachId != #{coachid,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.studentWeekShiduanInfoMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.studentWeekShiduanInfo" >
+    <result column="SelectClassStudentId" property="selectclassstudentid" jdbcType="VARCHAR" />
+    <result column="TeachingTimeBeginTime" property="teachingtimebegintime" jdbcType="TIME" />
+    <result column="TeachingTimeEndTime" property="teachingtimeendtime" jdbcType="TIME" />
+    <result column="TeachingTimeWeek" property="teachingtimeweek" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.studentWeekShiduanInfo" >
+    insert into studentWeekShiduanInfo (SelectClassStudentId, TeachingTimeBeginTime, 
+      TeachingTimeEndTime, TeachingTimeWeek)
+    values (#{selectclassstudentid,jdbcType=VARCHAR}, #{teachingtimebegintime,jdbcType=TIME}, 
+      #{teachingtimeendtime,jdbcType=TIME}, #{teachingtimeweek,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.studentWeekShiduanInfo" >
+    insert into studentWeekShiduanInfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="selectclassstudentid != null" >
+        SelectClassStudentId,
+      </if>
+      <if test="teachingtimebegintime != null" >
+        TeachingTimeBeginTime,
+      </if>
+      <if test="teachingtimeendtime != null" >
+        TeachingTimeEndTime,
+      </if>
+      <if test="teachingtimeweek != null" >
+        TeachingTimeWeek,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="selectclassstudentid != null" >
+        #{selectclassstudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="teachingtimebegintime != null" >
+        #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null" >
+        #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeweek != null" >
+        #{teachingtimeweek,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectall" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.studentWeekShiduanInfo" >
+    select *
+    from studentWeekShiduanInfo
+    where SelectClassStudentId =  #{selectclassstudentid,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.BadmintonCourtsMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.BadmintonCourts" >
+    <id column="BadmintonCourtId" property="badmintoncourtid" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtTitle" property="badmintoncourttitle" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtAddress" property="badmintoncourtaddress" jdbcType="VARCHAR" />
+    <result column="BadmintonSitesNumber" property="badmintonsitesnumber" jdbcType="INTEGER" />
+    <result column="BadmintonCourtLinkman" property="badmintoncourtlinkman" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtContactPhone" property="badmintoncourtcontactphone" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtPhotoPath" property="badmintoncourtphotopath" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtStandbyone" property="badmintoncourtstandbyone" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtStandbytwo" property="badmintoncourtstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BadmintonCourtId, BadmintonCourtTitle, BadmintonCourtAddress, BadmintonSitesNumber, 
+    BadmintonCourtLinkman, BadmintonCourtContactPhone, BadmintonCourtPhotoPath, BadmintonCourtStandbyone, 
+    BadmintonCourtStandbytwo
+  </sql>
+  <resultMap id="CountMap" type="io.renren.modules.WeiYu.model.Count" >
+    <id column="BadmintonCourtId" property="badmintoncourtid" jdbcType="VARCHAR" />
+    <result column="BadmintonCourtTitle" property="badmintoncourttitle" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from BadmintonCourts
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from BadmintonCourts
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.BadmintonCourts" >
+    insert into BadmintonCourts (BadmintonCourtId, BadmintonCourtTitle, 
+      BadmintonCourtAddress, BadmintonSitesNumber, 
+      BadmintonCourtLinkman, BadmintonCourtContactPhone, 
+      BadmintonCourtPhotoPath, BadmintonCourtStandbyone, 
+      BadmintonCourtStandbytwo)
+    values (#{badmintoncourtid,jdbcType=VARCHAR}, #{badmintoncourttitle,jdbcType=VARCHAR}, 
+      #{badmintoncourtaddress,jdbcType=VARCHAR}, #{badmintonsitesnumber,jdbcType=INTEGER}, 
+      #{badmintoncourtlinkman,jdbcType=VARCHAR}, #{badmintoncourtcontactphone,jdbcType=VARCHAR}, 
+      #{badmintoncourtphotopath,jdbcType=VARCHAR}, #{badmintoncourtstandbyone,jdbcType=VARCHAR}, 
+      #{badmintoncourtstandbytwo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.BadmintonCourts" >
+    insert into BadmintonCourts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="badmintoncourtid != null" >
+        BadmintonCourtId,
+      </if>
+      <if test="badmintoncourttitle != null" >
+        BadmintonCourtTitle,
+      </if>
+      <if test="badmintoncourtaddress != null" >
+        BadmintonCourtAddress,
+      </if>
+      <if test="badmintonsitesnumber != null" >
+        BadmintonSitesNumber,
+      </if>
+      <if test="badmintoncourtlinkman != null" >
+        BadmintonCourtLinkman,
+      </if>
+      <if test="badmintoncourtcontactphone != null" >
+        BadmintonCourtContactPhone,
+      </if>
+      <if test="badmintoncourtphotopath != null" >
+        BadmintonCourtPhotoPath,
+      </if>
+      <if test="badmintoncourtstandbyone != null" >
+        BadmintonCourtStandbyone,
+      </if>
+      <if test="badmintoncourtstandbytwo != null" >
+        BadmintonCourtStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="badmintoncourtid != null" >
+        #{badmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourttitle != null" >
+        #{badmintoncourttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtaddress != null" >
+        #{badmintoncourtaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesnumber != null" >
+        #{badmintonsitesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="badmintoncourtlinkman != null" >
+        #{badmintoncourtlinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtcontactphone != null" >
+        #{badmintoncourtcontactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtphotopath != null" >
+        #{badmintoncourtphotopath,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtstandbyone != null" >
+        #{badmintoncourtstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtstandbytwo != null" >
+        #{badmintoncourtstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.BadmintonCourts" >
+    update BadmintonCourts
+    <set >
+      <if test="badmintoncourttitle != null" >
+        BadmintonCourtTitle = #{badmintoncourttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtaddress != null" >
+        BadmintonCourtAddress = #{badmintoncourtaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintonsitesnumber != null" >
+        BadmintonSitesNumber = #{badmintonsitesnumber,jdbcType=INTEGER},
+      </if>
+      <if test="badmintoncourtlinkman != null" >
+        BadmintonCourtLinkman = #{badmintoncourtlinkman,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtcontactphone != null" >
+        BadmintonCourtContactPhone = #{badmintoncourtcontactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtphotopath != null" >
+        BadmintonCourtPhotoPath = #{badmintoncourtphotopath,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtstandbyone != null" >
+        BadmintonCourtStandbyone = #{badmintoncourtstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="badmintoncourtstandbytwo != null" >
+        BadmintonCourtStandbytwo = #{badmintoncourtstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.BadmintonCourts" >
+    update BadmintonCourts
+    set BadmintonCourtTitle = #{badmintoncourttitle,jdbcType=VARCHAR},
+      BadmintonCourtAddress = #{badmintoncourtaddress,jdbcType=VARCHAR},
+      BadmintonSitesNumber = #{badmintonsitesnumber,jdbcType=INTEGER},
+      BadmintonCourtLinkman = #{badmintoncourtlinkman,jdbcType=VARCHAR},
+      BadmintonCourtContactPhone = #{badmintoncourtcontactphone,jdbcType=VARCHAR},
+      BadmintonCourtPhotoPath = #{badmintoncourtphotopath,jdbcType=VARCHAR},
+      BadmintonCourtStandbyone = #{badmintoncourtstandbyone,jdbcType=VARCHAR},
+      BadmintonCourtStandbytwo = #{badmintoncourtstandbytwo,jdbcType=INTEGER}
+    where BadmintonCourtId = #{badmintoncourtid,jdbcType=VARCHAR}
+  </update>
+
+  <sql id="BadmintonCourtTitle" >
+BadmintonCourtTitle
+  </sql>
+
+  <select id="selectallCourt" resultMap="CountMap" parameterType="io.renren.modules.WeiYu.model.Count" >
+    select
+   BadmintonCourtTitle,BadmintonCourtId
+    from BadmintonCourts
+  </select>
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.StudentsMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.Students" >
+    <id column="StudentId" property="studentid" jdbcType="VARCHAR" />
+    <result column="StudentWechatNumber" property="studentwechatnumber" jdbcType="VARCHAR" />
+    <result column="StudentHeadPortrait" property="studentheadportrait" jdbcType="VARCHAR" />
+    <result column="StudentName" property="studentname" jdbcType="VARCHAR" />
+    <result column="StudentNickName" property="studentnickname" jdbcType="VARCHAR" />
+    <result column="StudentMotherName" property="studentmothername" jdbcType="VARCHAR" />
+    <result column="StudentMotherPhone" property="studentmotherphone" jdbcType="VARCHAR" />
+    <result column="StudentFatherName" property="studentfathername" jdbcType="VARCHAR" />
+    <result column="StudentFatherPhone" property="studentfatherphone" jdbcType="VARCHAR" />
+    <result column="StudentGrandMotherPhone" property="studentgrandmotherphone" jdbcType="VARCHAR" />
+    <result column="StudentGrandFatherPhone" property="studentgrandfatherphone" jdbcType="VARCHAR" />
+    <result column="StudentHomeAddressOne" property="studenthomeaddressone" jdbcType="VARCHAR" />
+    <result column="StudentHomeAddressTwo" property="studenthomeaddresstwo" jdbcType="VARCHAR" />
+    <result column="StudentPhone" property="studentphone" jdbcType="VARCHAR" />
+    <result column="StudentSex" property="studentsex" jdbcType="VARCHAR" />
+    <result column="StudentIDNumber" property="studentidnumber" jdbcType="VARCHAR" />
+    <result column="StudentSchool" property="studentschool" jdbcType="VARCHAR" />
+    <result column="StudentSchoolclass" property="studentschoolclass" jdbcType="VARCHAR" />
+    <result column="StudentTechnicalLevel" property="studenttechnicallevel" jdbcType="VARCHAR" />
+    <result column="StudentAward" property="studentaward" jdbcType="VARCHAR" />
+    <result column="StudentStartLearningYear" property="studentstartlearningyear" jdbcType="VARCHAR" />
+    <result column="StudentIDPositivePhotoPreservationPath" property="studentidpositivephotopreservationpath" jdbcType="VARCHAR" />
+    <result column="StudentIDBackPhotoPreservationPath" property="studentidbackphotopreservationpath" jdbcType="VARCHAR" />
+    <result column="StudentSitesStandbyone" property="studentsitesstandbyone" jdbcType="VARCHAR" />
+    <result column="StudentSitesStandbytwo" property="studentsitesstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    StudentId, StudentWechatNumber, StudentHeadPortrait, StudentName, StudentNickName, 
+    StudentMotherName, StudentMotherPhone, StudentFatherName, StudentFatherPhone, StudentGrandMotherPhone, 
+    StudentGrandFatherPhone, StudentHomeAddressOne, StudentHomeAddressTwo, StudentPhone, 
+    StudentSex, StudentIDNumber, StudentSchool, StudentSchoolclass, StudentTechnicalLevel, 
+    StudentAward, StudentStartLearningYear, StudentIDPositivePhotoPreservationPath, StudentIDBackPhotoPreservationPath, 
+    StudentSitesStandbyone, StudentSitesStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Students
+    where StudentId = #{studentid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Students
+    where StudentId = #{studentid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.Students" >
+    insert into Students (StudentId, StudentWechatNumber, StudentHeadPortrait, 
+      StudentName, StudentNickName, StudentMotherName, 
+      StudentMotherPhone, StudentFatherName, 
+      StudentFatherPhone, StudentGrandMotherPhone, 
+      StudentGrandFatherPhone, StudentHomeAddressOne, 
+      StudentHomeAddressTwo, StudentPhone, StudentSex, 
+      StudentIDNumber, StudentSchool, StudentSchoolclass, 
+      StudentTechnicalLevel, StudentAward, StudentStartLearningYear, 
+      StudentIDPositivePhotoPreservationPath, StudentIDBackPhotoPreservationPath, 
+      StudentSitesStandbyone, StudentSitesStandbytwo
+      )
+    values (#{studentid,jdbcType=VARCHAR}, #{studentwechatnumber,jdbcType=VARCHAR}, #{studentheadportrait,jdbcType=VARCHAR}, 
+      #{studentname,jdbcType=VARCHAR}, #{studentnickname,jdbcType=VARCHAR}, #{studentmothername,jdbcType=VARCHAR}, 
+      #{studentmotherphone,jdbcType=VARCHAR}, #{studentfathername,jdbcType=VARCHAR}, 
+      #{studentfatherphone,jdbcType=VARCHAR}, #{studentgrandmotherphone,jdbcType=VARCHAR}, 
+      #{studentgrandfatherphone,jdbcType=VARCHAR}, #{studenthomeaddressone,jdbcType=VARCHAR}, 
+      #{studenthomeaddresstwo,jdbcType=VARCHAR}, #{studentphone,jdbcType=VARCHAR}, #{studentsex,jdbcType=VARCHAR}, 
+      #{studentidnumber,jdbcType=VARCHAR}, #{studentschool,jdbcType=VARCHAR}, #{studentschoolclass,jdbcType=VARCHAR}, 
+      #{studenttechnicallevel,jdbcType=VARCHAR}, #{studentaward,jdbcType=VARCHAR}, #{studentstartlearningyear,jdbcType=VARCHAR}, 
+      #{studentidpositivephotopreservationpath,jdbcType=VARCHAR}, #{studentidbackphotopreservationpath,jdbcType=VARCHAR}, 
+      #{studentsitesstandbyone,jdbcType=VARCHAR}, #{studentsitesstandbytwo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.Students" >
+    insert into Students
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        StudentId,
+      </if>
+      <if test="studentwechatnumber != null" >
+        StudentWechatNumber,
+      </if>
+      <if test="studentheadportrait != null" >
+        StudentHeadPortrait,
+      </if>
+      <if test="studentname != null" >
+        StudentName,
+      </if>
+      <if test="studentnickname != null" >
+        StudentNickName,
+      </if>
+      <if test="studentmothername != null" >
+        StudentMotherName,
+      </if>
+      <if test="studentmotherphone != null" >
+        StudentMotherPhone,
+      </if>
+      <if test="studentfathername != null" >
+        StudentFatherName,
+      </if>
+      <if test="studentfatherphone != null" >
+        StudentFatherPhone,
+      </if>
+      <if test="studentgrandmotherphone != null" >
+        StudentGrandMotherPhone,
+      </if>
+      <if test="studentgrandfatherphone != null" >
+        StudentGrandFatherPhone,
+      </if>
+      <if test="studenthomeaddressone != null" >
+        StudentHomeAddressOne,
+      </if>
+      <if test="studenthomeaddresstwo != null" >
+        StudentHomeAddressTwo,
+      </if>
+      <if test="studentphone != null" >
+        StudentPhone,
+      </if>
+      <if test="studentsex != null" >
+        StudentSex,
+      </if>
+      <if test="studentidnumber != null" >
+        StudentIDNumber,
+      </if>
+      <if test="studentschool != null" >
+        StudentSchool,
+      </if>
+      <if test="studentschoolclass != null" >
+        StudentSchoolclass,
+      </if>
+      <if test="studenttechnicallevel != null" >
+        StudentTechnicalLevel,
+      </if>
+      <if test="studentaward != null" >
+        StudentAward,
+      </if>
+      <if test="studentstartlearningyear != null" >
+        StudentStartLearningYear,
+      </if>
+      <if test="studentidpositivephotopreservationpath != null" >
+        StudentIDPositivePhotoPreservationPath,
+      </if>
+      <if test="studentidbackphotopreservationpath != null" >
+        StudentIDBackPhotoPreservationPath,
+      </if>
+      <if test="studentsitesstandbyone != null" >
+        StudentSitesStandbyone,
+      </if>
+      <if test="studentsitesstandbytwo != null" >
+        StudentSitesStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentid != null" >
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentwechatnumber != null" >
+        #{studentwechatnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentheadportrait != null" >
+        #{studentheadportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="studentname != null" >
+        #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentnickname != null" >
+        #{studentnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentmothername != null" >
+        #{studentmothername,jdbcType=VARCHAR},
+      </if>
+      <if test="studentmotherphone != null" >
+        #{studentmotherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentfathername != null" >
+        #{studentfathername,jdbcType=VARCHAR},
+      </if>
+      <if test="studentfatherphone != null" >
+        #{studentfatherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentgrandmotherphone != null" >
+        #{studentgrandmotherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentgrandfatherphone != null" >
+        #{studentgrandfatherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthomeaddressone != null" >
+        #{studenthomeaddressone,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthomeaddresstwo != null" >
+        #{studenthomeaddresstwo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentphone != null" >
+        #{studentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsex != null" >
+        #{studentsex,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidnumber != null" >
+        #{studentidnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschool != null" >
+        #{studentschool,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschoolclass != null" >
+        #{studentschoolclass,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttechnicallevel != null" >
+        #{studenttechnicallevel,jdbcType=VARCHAR},
+      </if>
+      <if test="studentaward != null" >
+        #{studentaward,jdbcType=VARCHAR},
+      </if>
+      <if test="studentstartlearningyear != null" >
+        #{studentstartlearningyear,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidpositivephotopreservationpath != null" >
+        #{studentidpositivephotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidbackphotopreservationpath != null" >
+        #{studentidbackphotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsitesstandbyone != null" >
+        #{studentsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsitesstandbytwo != null" >
+        #{studentsitesstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.Students" >
+    update Students
+    <set >
+      <if test="studentwechatnumber != null" >
+        StudentWechatNumber = #{studentwechatnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentheadportrait != null" >
+        StudentHeadPortrait = #{studentheadportrait,jdbcType=VARCHAR},
+      </if>
+      <if test="studentname != null" >
+        StudentName = #{studentname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentnickname != null" >
+        StudentNickName = #{studentnickname,jdbcType=VARCHAR},
+      </if>
+      <if test="studentmothername != null" >
+        StudentMotherName = #{studentmothername,jdbcType=VARCHAR},
+      </if>
+      <if test="studentmotherphone != null" >
+        StudentMotherPhone = #{studentmotherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentfathername != null" >
+        StudentFatherName = #{studentfathername,jdbcType=VARCHAR},
+      </if>
+      <if test="studentfatherphone != null" >
+        StudentFatherPhone = #{studentfatherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentgrandmotherphone != null" >
+        StudentGrandMotherPhone = #{studentgrandmotherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentgrandfatherphone != null" >
+        StudentGrandFatherPhone = #{studentgrandfatherphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthomeaddressone != null" >
+        StudentHomeAddressOne = #{studenthomeaddressone,jdbcType=VARCHAR},
+      </if>
+      <if test="studenthomeaddresstwo != null" >
+        StudentHomeAddressTwo = #{studenthomeaddresstwo,jdbcType=VARCHAR},
+      </if>
+      <if test="studentphone != null" >
+        StudentPhone = #{studentphone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsex != null" >
+        StudentSex = #{studentsex,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidnumber != null" >
+        StudentIDNumber = #{studentidnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschool != null" >
+        StudentSchool = #{studentschool,jdbcType=VARCHAR},
+      </if>
+      <if test="studentschoolclass != null" >
+        StudentSchoolclass = #{studentschoolclass,jdbcType=VARCHAR},
+      </if>
+      <if test="studenttechnicallevel != null" >
+        StudentTechnicalLevel = #{studenttechnicallevel,jdbcType=VARCHAR},
+      </if>
+      <if test="studentaward != null" >
+        StudentAward = #{studentaward,jdbcType=VARCHAR},
+      </if>
+      <if test="studentstartlearningyear != null" >
+        StudentStartLearningYear = #{studentstartlearningyear,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidpositivephotopreservationpath != null" >
+        StudentIDPositivePhotoPreservationPath = #{studentidpositivephotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="studentidbackphotopreservationpath != null" >
+        StudentIDBackPhotoPreservationPath = #{studentidbackphotopreservationpath,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsitesstandbyone != null" >
+        StudentSitesStandbyone = #{studentsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentsitesstandbytwo != null" >
+        StudentSitesStandbytwo = #{studentsitesstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where StudentId = #{studentid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.Students" >
+    update Students
+    set StudentWechatNumber = #{studentwechatnumber,jdbcType=VARCHAR},
+      StudentHeadPortrait = #{studentheadportrait,jdbcType=VARCHAR},
+      StudentName = #{studentname,jdbcType=VARCHAR},
+      StudentNickName = #{studentnickname,jdbcType=VARCHAR},
+      StudentMotherName = #{studentmothername,jdbcType=VARCHAR},
+      StudentMotherPhone = #{studentmotherphone,jdbcType=VARCHAR},
+      StudentFatherName = #{studentfathername,jdbcType=VARCHAR},
+      StudentFatherPhone = #{studentfatherphone,jdbcType=VARCHAR},
+      StudentGrandMotherPhone = #{studentgrandmotherphone,jdbcType=VARCHAR},
+      StudentGrandFatherPhone = #{studentgrandfatherphone,jdbcType=VARCHAR},
+      StudentHomeAddressOne = #{studenthomeaddressone,jdbcType=VARCHAR},
+      StudentHomeAddressTwo = #{studenthomeaddresstwo,jdbcType=VARCHAR},
+      StudentPhone = #{studentphone,jdbcType=VARCHAR},
+      StudentSex = #{studentsex,jdbcType=VARCHAR},
+      StudentIDNumber = #{studentidnumber,jdbcType=VARCHAR},
+      StudentSchool = #{studentschool,jdbcType=VARCHAR},
+      StudentSchoolclass = #{studentschoolclass,jdbcType=VARCHAR},
+      StudentTechnicalLevel = #{studenttechnicallevel,jdbcType=VARCHAR},
+      StudentAward = #{studentaward,jdbcType=VARCHAR},
+      StudentStartLearningYear = #{studentstartlearningyear,jdbcType=VARCHAR},
+      StudentIDPositivePhotoPreservationPath = #{studentidpositivephotopreservationpath,jdbcType=VARCHAR},
+      StudentIDBackPhotoPreservationPath = #{studentidbackphotopreservationpath,jdbcType=VARCHAR},
+      StudentSitesStandbyone = #{studentsitesstandbyone,jdbcType=VARCHAR},
+      StudentSitesStandbytwo = #{studentsitesstandbytwo,jdbcType=INTEGER}
+    where StudentId = #{studentid,jdbcType=VARCHAR}
+  </update>
+  <insert id="insertid" parameterType="io.renren.modules.WeiYu.model.Students" >
+    insert into Students (StudentId
+      )
+    values (#{studentid,jdbcType=VARCHAR}
+      )
+  </insert>
+
+</mapper>

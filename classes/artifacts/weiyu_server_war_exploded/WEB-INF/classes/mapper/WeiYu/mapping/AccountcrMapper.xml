@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.AccountcrMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.Accountcr" >
+    <result column="StudentIntegralAccountId" property="studentintegralaccountid" jdbcType="VARCHAR" />
+    <result column="StudentAccountClassNumbers" property="studentaccountclassnumbers" jdbcType="INTEGER" />
+    <result column="StudentIntegralAccountRemainderPaymentAccount" property="studentintegralaccountremainderpaymentaccount" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.Accountcr" >
+    insert into Accountcr (StudentIntegralAccountId, StudentAccountClassNumbers, 
+      StudentIntegralAccountRemainderPaymentAccount)
+    values (#{studentintegralaccountid,jdbcType=VARCHAR}, #{studentaccountclassnumbers,jdbcType=INTEGER}, 
+      #{studentintegralaccountremainderpaymentaccount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.Accountcr" >
+    insert into Accountcr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentintegralaccountid != null" >
+        StudentIntegralAccountId,
+      </if>
+      <if test="studentaccountclassnumbers != null" >
+        StudentAccountClassNumbers,
+      </if>
+      <if test="studentintegralaccountremainderpaymentaccount != null" >
+        StudentIntegralAccountRemainderPaymentAccount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentintegralaccountid != null" >
+        #{studentintegralaccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentaccountclassnumbers != null" >
+        #{studentaccountclassnumbers,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountremainderpaymentaccount != null" >
+        #{studentintegralaccountremainderpaymentaccount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectByid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from Accountcr
+    where StudentIntegralAccountId = #{studentintegralaccountid,jdbcType=VARCHAR}
+  </select>
+
+  <sql id="Base_Column_List" >
+    StudentIntegralAccountId, StudentAccountClassNumbers,
+      StudentIntegralAccountRemainderPaymentAccount
+  </sql>
+</mapper>
