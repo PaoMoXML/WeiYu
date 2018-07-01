@@ -33,7 +33,8 @@ public class SelectClassServiceImpl implements SelectClassService {
     public  List<SelectClass>selectByOther(SelectClass record){
         return selectClassMapper.selectByOther(record);
     }
-
+    @Override
+    public int updateByid(SelectClass record){return selectClassMapper.updateByid(record);}
 }
 
 

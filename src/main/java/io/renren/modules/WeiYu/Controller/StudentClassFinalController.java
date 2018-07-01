@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "StudentCF")
+@RequestMapping(value = "/StudentCF")
 public class StudentClassFinalController {
     @Autowired
     private StudentClassFinalService studentClassFinalService;

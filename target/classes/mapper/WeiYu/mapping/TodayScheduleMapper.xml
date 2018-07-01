@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.TodayScheduleMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.TodaySchedule" >
+    <result column="BadmintonCourtTitle" property="badmintoncourttitle" jdbcType="VARCHAR" />
+    <result column="ClassId" property="classid" jdbcType="VARCHAR" />
+    <result column="ClassBadmintonCourtId" property="classbadmintoncourtid" jdbcType="VARCHAR" />
+    <result column="ClassBadmintonSitesId" property="classbadmintonsitesid" jdbcType="VARCHAR" />
+    <result column="ClassName" property="classname" jdbcType="VARCHAR" />
+    <result column="ClassType" property="classtype" jdbcType="VARCHAR" />
+    <result column="ClassStatus" property="classstatus" jdbcType="CHAR" />
+    <result column="ClassSemester" property="classsemester" jdbcType="VARCHAR" />
+    <result column="ClassStartDate" property="classstartdate" jdbcType="DATE" />
+    <result column="ClassEndDate" property="classenddate" jdbcType="DATE" />
+    <result column="Classweek" property="classweek" jdbcType="VARCHAR" />
+    <result column="ClassTeachingTime" property="classteachingtime" jdbcType="VARCHAR" />
+    <result column="ClassCoachId" property="classcoachid" jdbcType="VARCHAR" />
+    <result column="ClassSpecifiedNumber" property="classspecifiednumber" jdbcType="INTEGER" />
+    <result column="ClassMaxNumber" property="classmaxnumber" jdbcType="INTEGER" />
+    <result column="ClassStandbyone" property="classstandbyone" jdbcType="VARCHAR" />
+    <result column="ClassStandbytwo" property="classstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.TodaySchedule" >
+    insert into TodaySchedule (BadmintonCourtTitle, ClassId, ClassBadmintonCourtId, 
+      ClassBadmintonSitesId, ClassName, ClassType, 
+      ClassStatus, ClassSemester, ClassStartDate, 
+      ClassEndDate, Classweek, ClassTeachingTime, 
+      ClassCoachId, ClassSpecifiedNumber, ClassMaxNumber, 
+      ClassStandbyone, ClassStandbytwo)
+    values (#{badmintoncourttitle,jdbcType=VARCHAR}, #{classid,jdbcType=VARCHAR}, #{classbadmintoncourtid,jdbcType=VARCHAR}, 
+      #{classbadmintonsitesid,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, #{classtype,jdbcType=VARCHAR}, 
+      #{classstatus,jdbcType=CHAR}, #{classsemester,jdbcType=VARCHAR}, #{classstartdate,jdbcType=DATE}, 
+      #{classenddate,jdbcType=DATE}, #{classweek,jdbcType=VARCHAR}, #{classteachingtime,jdbcType=VARCHAR}, 
+      #{classcoachid,jdbcType=VARCHAR}, #{classspecifiednumber,jdbcType=INTEGER}, #{classmaxnumber,jdbcType=INTEGER}, 
+      #{classstandbyone,jdbcType=VARCHAR}, #{classstandbytwo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.TodaySchedule" >
+    insert into TodaySchedule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="badmintoncourttitle != null" >
+        BadmintonCourtTitle,
+      </if>
+      <if test="classid != null" >
+        ClassId,
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        ClassBadmintonCourtId,
+      </if>
+      <if test="classbadmintonsitesid != null" >
+        ClassBadmintonSitesId,
+      </if>
+      <if test="classname != null" >
+        ClassName,
+      </if>
+      <if test="classtype != null" >
+        ClassType,
+      </if>
+      <if test="classstatus != null" >
+        ClassStatus,
+      </if>
+      <if test="classsemester != null" >
+        ClassSemester,
+      </if>
+      <if test="classstartdate != null" >
+        ClassStartDate,
+      </if>
+      <if test="classenddate != null" >
+        ClassEndDate,
+      </if>
+      <if test="classweek != null" >
+        Classweek,
+      </if>
+      <if test="classteachingtime != null" >
+        ClassTeachingTime,
+      </if>
+      <if test="classcoachid != null" >
+        ClassCoachId,
+      </if>
+      <if test="classspecifiednumber != null" >
+        ClassSpecifiedNumber,
+      </if>
+      <if test="classmaxnumber != null" >
+        ClassMaxNumber,
+      </if>
+      <if test="classstandbyone != null" >
+        ClassStandbyone,
+      </if>
+      <if test="classstandbytwo != null" >
+        ClassStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="badmintoncourttitle != null" >
+        #{badmintoncourttitle,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        #{classbadmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintonsitesid != null" >
+        #{classbadmintonsitesid,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="classtype != null" >
+        #{classtype,jdbcType=VARCHAR},
+      </if>
+      <if test="classstatus != null" >
+        #{classstatus,jdbcType=CHAR},
+      </if>
+      <if test="classsemester != null" >
+        #{classsemester,jdbcType=VARCHAR},
+      </if>
+      <if test="classstartdate != null" >
+        #{classstartdate,jdbcType=DATE},
+      </if>
+      <if test="classenddate != null" >
+        #{classenddate,jdbcType=DATE},
+      </if>
+      <if test="classweek != null" >
+        #{classweek,jdbcType=VARCHAR},
+      </if>
+      <if test="classteachingtime != null" >
+        #{classteachingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="classcoachid != null" >
+        #{classcoachid,jdbcType=VARCHAR},
+      </if>
+      <if test="classspecifiednumber != null" >
+        #{classspecifiednumber,jdbcType=INTEGER},
+      </if>
+      <if test="classmaxnumber != null" >
+        #{classmaxnumber,jdbcType=INTEGER},
+      </if>
+      <if test="classstandbyone != null" >
+        #{classstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="classstandbytwo != null" >
+        #{classstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectByCidAndDate" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.TodaySchedule" >
+    select *
+    from TodaySchedule
+    where #{classstartdate,jdbcType=DATE}>= ClassStartDate
+    AND ClassEndDate >=  #{classstartdate,jdbcType=DATE}
+    AND  ClassStatus = 1
+    AND ClassCoachId =  #{classcoachid,jdbcType=VARCHAR}
+  </select>
+</mapper>

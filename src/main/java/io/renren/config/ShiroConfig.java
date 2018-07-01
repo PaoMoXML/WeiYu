@@ -96,6 +96,13 @@ public class ShiroConfig {
         filterMap.put("/studentWeekShiduanInfo/**", "anon");
         filterMap.put("/QDdetail/**", "anon");
         filterMap.put("/Today/**", "anon");
+        filterMap.put("/TodaySchedule/**", "anon");
+        filterMap.put("/coachDayNumber/**", "anon");
+        filterMap.put("/CoachAllNumber/**", "anon");
+        filterMap.put("/MyClassDetail/**", "anon");
+        filterMap.put("/StudentLeave/**", "anon");
+        filterMap.put("/trainingToDetail/**", "anon");
+        filterMap.put("/pay/**", "anon");
         filterMap.put("/**", "oauth2");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
 

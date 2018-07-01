@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.MyClassDetailMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.MyClassDetail" >
+    <result column="SignInForClassCoachId" property="signinforclasscoachid" jdbcType="VARCHAR" />
+    <result column="SignInForClassStudentStateTwo" property="signinforclassstudentstatetwo" jdbcType="CHAR" />
+    <result column="SignInForClassState" property="signinforclassstate" jdbcType="INTEGER" />
+    <result column="ClassName" property="classname" jdbcType="VARCHAR" />
+    <result column="TraniningDate" property="traniningdate" jdbcType="DATE" />
+    <result column="TeachingTimeBeginTime" property="teachingtimebegintime" jdbcType="TIME" />
+    <result column="TeachingTimeEndTime" property="teachingtimeendtime" jdbcType="TIME" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.MyClassDetail" >
+    insert into MyClassDetail (SignInForClassCoachId, SignInForClassStudentStateTwo, 
+      SignInForClassState, ClassName, TraniningDate, 
+      TeachingTimeBeginTime, TeachingTimeEndTime)
+    values (#{signinforclasscoachid,jdbcType=VARCHAR}, #{signinforclassstudentstatetwo,jdbcType=CHAR}, 
+      #{signinforclassstate,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{traniningdate,jdbcType=DATE}, 
+      #{teachingtimebegintime,jdbcType=TIME}, #{teachingtimeendtime,jdbcType=TIME})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.MyClassDetail" >
+    insert into MyClassDetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="signinforclasscoachid != null" >
+        SignInForClassCoachId,
+      </if>
+      <if test="signinforclassstudentstatetwo != null" >
+        SignInForClassStudentStateTwo,
+      </if>
+      <if test="signinforclassstate != null" >
+        SignInForClassState,
+      </if>
+      <if test="classname != null" >
+        ClassName,
+      </if>
+      <if test="traniningdate != null" >
+        TraniningDate,
+      </if>
+      <if test="teachingtimebegintime != null" >
+        TeachingTimeBeginTime,
+      </if>
+      <if test="teachingtimeendtime != null" >
+        TeachingTimeEndTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="signinforclasscoachid != null" >
+        #{signinforclasscoachid,jdbcType=VARCHAR},
+      </if>
+      <if test="signinforclassstudentstatetwo != null" >
+        #{signinforclassstudentstatetwo,jdbcType=CHAR},
+      </if>
+      <if test="signinforclassstate != null" >
+        #{signinforclassstate,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="traniningdate != null" >
+        #{traniningdate,jdbcType=DATE},
+      </if>
+      <if test="teachingtimebegintime != null" >
+        #{teachingtimebegintime,jdbcType=TIME},
+      </if>
+      <if test="teachingtimeendtime != null" >
+        #{teachingtimeendtime,jdbcType=TIME},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectallByCidANDDate" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.CoachAllNumber">
+    select *
+    from MyClassDetail
+    where SignInForClassCoachId = #{signinforclasscoachid,jdbcType=VARCHAR}
+    AND TraniningDate = #{traniningdate,jdbcType=DATE}
+    AND SignInForClassState = 1
+    AND (SignInForClassStudentStateTwo = 1  OR SignInForClassStudentStateTwo = 4)
+  </select>
+
+  <select id="selectallByCidANDDate1" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.CoachAllNumber">
+    select  distinct ClassName,TeachingTimeBeginTime,TeachingTimeEndTime,TraniningDate
+    from MyClassDetail
+    where SignInForClassCoachId = #{signinforclasscoachid,jdbcType=VARCHAR}
+    AND TraniningDate = #{traniningdate,jdbcType=DATE}
+    AND SignInForClassState = 1
+  </select>
+
+  <select id="selectallByCidANDDateM" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.CoachAllNumber">
+    select  distinct ClassName,TeachingTimeBeginTime,TeachingTimeEndTime,TraniningDate
+    from MyClassDetail
+    where SignInForClassCoachId = #{signinforclasscoachid,jdbcType=VARCHAR}
+    AND MONTH (TraniningDate) = MONTH (#{traniningdate,jdbcType=DATE})
+    AND SignInForClassState = 1
+  </select>
+
+</mapper>

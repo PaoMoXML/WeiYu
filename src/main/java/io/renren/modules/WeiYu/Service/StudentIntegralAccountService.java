@@ -8,4 +8,5 @@ public interface StudentIntegralAccountService {
     int deleteByPrimaryKey(String studentintegralaccountid);
     int updateByPrimaryKey(StudentIntegralAccount record);
     StudentIntegralAccount selectByPrimaryKey(String studentintegralaccountid);
+
 }

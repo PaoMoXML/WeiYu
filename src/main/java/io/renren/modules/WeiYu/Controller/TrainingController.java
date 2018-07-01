@@ -32,7 +32,7 @@ public class TrainingController {
     }
     @ResponseBody
     @RequestMapping(value = "/selectByid",method = RequestMethod.GET)
-    @ApiOperation("请假信息")
+    @ApiOperation("教练请假信息")
     public List<Training> selectByid(String CoachId){
         return trainingService.selectByid(CoachId);
     }
@@ -42,7 +42,24 @@ public class TrainingController {
     public List<Training> selectByiddate(Training record){
         return trainingService.selectByiddate(record);
     }
+    @ResponseBody
+    @RequestMapping(value = "/selectBydateandclassid",method = RequestMethod.GET)
+    @ApiOperation("学生请假")
+    public List<Training> selectQJ (Training record) {
+        return trainingService.selectQJ(record);
+    }
+    @ResponseBody
+    @RequestMapping(value = "/selectByidANDDate",method = RequestMethod.GET)
+    @ApiOperation("教练当月课程")
+    public List<Training>selectByidANDDate (Training record){
+        return trainingService.selectByidANDDate(record);
+    }
+    @ResponseBody
+    @RequestMapping(value = "/selectByidANDDateToday",method = RequestMethod.GET)
+    @ApiOperation("教练当日课程")
+    public List<Training>selectByidANDDateToday(Training record){
+        return trainingService.selectByidANDDateToday(record);
+    }
 
 
-    
 }

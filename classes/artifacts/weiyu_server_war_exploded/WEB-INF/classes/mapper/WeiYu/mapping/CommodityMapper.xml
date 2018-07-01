@@ -92,4 +92,10 @@
       CommodityStandbytwo = #{commoditystandbytwo,jdbcType=INTEGER}
     where CommodityId = #{commodityid,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectall" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from Commodity
+  </select>
 </mapper>

@@ -1,7 +1,11 @@
 package io.renren.modules.WeiYu.Controller;
 
+import com.github.qcloudsms.SmsSingleSender;
+import com.github.qcloudsms.SmsSingleSenderResult;
+import com.github.qcloudsms.httpclient.HTTPException;
 import io.renren.modules.WeiYu.Service.CoachNameService;
 import io.renren.modules.WeiYu.Service.CoachsService;
+import io.renren.modules.WeiYu.SmsConfigurer;
 import io.renren.modules.WeiYu.model.CoachName;
 import io.renren.modules.WeiYu.model.Coachs;
 import io.swagger.annotations.ApiOperation;
@@ -11,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-import java.util.UUID;
+import java.io.IOException;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/Coachs")
@@ -60,6 +64,31 @@ public class CoachsController {
     @ApiOperation("教练名字")
     public List<CoachName> selectByall(String coachid){
         return coachNameService.selectByall(coachid);
+    }
+    @ResponseBody
+    @RequestMapping(value = "/sendSms",method = RequestMethod.GET)
+    @ApiOperation("注册短信")
+    public Map<String,Object> sendSms(String phone){
+        Map<String,Object> map=new HashMap<>();
+        SmsSingleSenderResult smsSingleSenderResult=null;
+        int verifycode=new Random().nextInt(9000)+1000;
+        SmsSingleSender ssender = new SmsSingleSender(SmsConfigurer.appid, SmsConfigurer.appkey);
+        try {
+            smsSingleSenderResult = ssender.send(0, "86", phone,
+                    SmsConfigurer.smsSign+"您的验证码为："+verifycode+"，请输入完成验证。如非本人操作，请忽略本短信。","","");
+            map.put("status", smsSingleSenderResult.result);
+            map.put("msg", smsSingleSenderResult.errMsg);
+            map.put("verifycode", verifycode);
+            return map;
+        } catch (HTTPException e) {
+            map.put("status", 9999);
+            map.put("msg", "系统异常");
+            return  map;
+        } catch (IOException e) {
+            map.put("status", 9999);
+            map.put("msg", "系统异常");
+            return  map;
+        }
     }
 }
 

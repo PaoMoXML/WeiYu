@@ -3,6 +3,8 @@ package io.renren.modules.WeiYu.mapper;
 import io.renren.modules.WeiYu.model.Classes;
 import io.renren.modules.WeiYu.model.Classname;
 
+import java.util.List;
+
 public interface ClassesMapper {
     int deleteByPrimaryKey(String classid);
 
@@ -17,5 +19,7 @@ public interface ClassesMapper {
     int updateByPrimaryKey(Classes record);
 
     Classname selectname(String classid);
+
+    List<Classes> selectallByCid (String classcoachid);
 
 }

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.StudentLeaveMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.StudentLeave" >
+    <id column="StudentLeaveId" property="studentleaveid" jdbcType="VARCHAR" />
+    <result column="StudentLeaveStudentId" property="studentleavestudentid" jdbcType="VARCHAR" />
+    <result column="StudentLeaveClassId" property="studentleaveclassid" jdbcType="VARCHAR" />
+    <result column="StudentLeaveTrainingId" property="studentleavetrainingid" jdbcType="VARCHAR" />
+    <result column="StudentLeaveType" property="studentleavetype" jdbcType="INTEGER" />
+    <result column="StudentLeaveStatus" property="studentleavestatus" jdbcType="INTEGER" />
+    <result column="StudentLeaveReason" property="studentleavereason" jdbcType="VARCHAR" />
+    <result column="StudentLeaveReplyReason" property="studentleavereplyreason" jdbcType="VARCHAR" />
+    <result column="StudentLeaveDate" property="studentleavedate" jdbcType="DATE" />
+    <result column="StudentLeaveReplyDate" property="studentleavereplydate" jdbcType="DATE" />
+    <result column="StudentLeaveNewTrainingId" property="studentleavenewtrainingid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    StudentLeaveId, StudentLeaveStudentId, StudentLeaveClassId, StudentLeaveTrainingId, 
+    StudentLeaveType, StudentLeaveStatus, StudentLeaveReason, StudentLeaveReplyReason, 
+    StudentLeaveDate, StudentLeaveReplyDate, StudentLeaveNewTrainingId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from StudentLeave
+    where StudentLeaveId = #{studentleaveid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from StudentLeave
+    where StudentLeaveId = #{studentleaveid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.StudentLeave" >
+    insert into StudentLeave (StudentLeaveId, StudentLeaveStudentId, 
+      StudentLeaveClassId, StudentLeaveTrainingId, 
+      StudentLeaveType, StudentLeaveStatus, StudentLeaveReason, 
+      StudentLeaveReplyReason, StudentLeaveDate, 
+      StudentLeaveReplyDate, StudentLeaveNewTrainingId
+      )
+    values (#{studentleaveid,jdbcType=VARCHAR}, #{studentleavestudentid,jdbcType=VARCHAR}, 
+      #{studentleaveclassid,jdbcType=VARCHAR}, #{studentleavetrainingid,jdbcType=VARCHAR}, 
+      #{studentleavetype,jdbcType=INTEGER}, #{studentleavestatus,jdbcType=INTEGER}, #{studentleavereason,jdbcType=VARCHAR}, 
+      #{studentleavereplyreason,jdbcType=VARCHAR}, #{studentleavedate,jdbcType=DATE}, 
+      #{studentleavereplydate,jdbcType=DATE}, #{studentleavenewtrainingid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.StudentLeave" >
+    insert into StudentLeave
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentleaveid != null" >
+        StudentLeaveId,
+      </if>
+      <if test="studentleavestudentid != null" >
+        StudentLeaveStudentId,
+      </if>
+      <if test="studentleaveclassid != null" >
+        StudentLeaveClassId,
+      </if>
+      <if test="studentleavetrainingid != null" >
+        StudentLeaveTrainingId,
+      </if>
+      <if test="studentleavetype != null" >
+        StudentLeaveType,
+      </if>
+      <if test="studentleavestatus != null" >
+        StudentLeaveStatus,
+      </if>
+      <if test="studentleavereason != null" >
+        StudentLeaveReason,
+      </if>
+      <if test="studentleavereplyreason != null" >
+        StudentLeaveReplyReason,
+      </if>
+      <if test="studentleavedate != null" >
+        StudentLeaveDate,
+      </if>
+      <if test="studentleavereplydate != null" >
+        StudentLeaveReplyDate,
+      </if>
+      <if test="studentleavenewtrainingid != null" >
+        StudentLeaveNewTrainingId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentleaveid != null" >
+        #{studentleaveid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavestudentid != null" >
+        #{studentleavestudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleaveclassid != null" >
+        #{studentleaveclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavetrainingid != null" >
+        #{studentleavetrainingid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavetype != null" >
+        #{studentleavetype,jdbcType=INTEGER},
+      </if>
+      <if test="studentleavestatus != null" >
+        #{studentleavestatus,jdbcType=INTEGER},
+      </if>
+      <if test="studentleavereason != null" >
+        #{studentleavereason,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavereplyreason != null" >
+        #{studentleavereplyreason,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavedate != null" >
+        #{studentleavedate,jdbcType=DATE},
+      </if>
+      <if test="studentleavereplydate != null" >
+        #{studentleavereplydate,jdbcType=DATE},
+      </if>
+      <if test="studentleavenewtrainingid != null" >
+        #{studentleavenewtrainingid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.StudentLeave" >
+    update StudentLeave
+    <set >
+      <if test="studentleavestudentid != null" >
+        StudentLeaveStudentId = #{studentleavestudentid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleaveclassid != null" >
+        StudentLeaveClassId = #{studentleaveclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavetrainingid != null" >
+        StudentLeaveTrainingId = #{studentleavetrainingid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavetype != null" >
+        StudentLeaveType = #{studentleavetype,jdbcType=INTEGER},
+      </if>
+      <if test="studentleavestatus != null" >
+        StudentLeaveStatus = #{studentleavestatus,jdbcType=INTEGER},
+      </if>
+      <if test="studentleavereason != null" >
+        StudentLeaveReason = #{studentleavereason,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavereplyreason != null" >
+        StudentLeaveReplyReason = #{studentleavereplyreason,jdbcType=VARCHAR},
+      </if>
+      <if test="studentleavedate != null" >
+        StudentLeaveDate = #{studentleavedate,jdbcType=DATE},
+      </if>
+      <if test="studentleavereplydate != null" >
+        StudentLeaveReplyDate = #{studentleavereplydate,jdbcType=DATE},
+      </if>
+      <if test="studentleavenewtrainingid != null" >
+        StudentLeaveNewTrainingId = #{studentleavenewtrainingid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where StudentLeaveId = #{studentleaveid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.StudentLeave" >
+    update StudentLeave
+    set StudentLeaveStudentId = #{studentleavestudentid,jdbcType=VARCHAR},
+      StudentLeaveClassId = #{studentleaveclassid,jdbcType=VARCHAR},
+      StudentLeaveTrainingId = #{studentleavetrainingid,jdbcType=VARCHAR},
+      StudentLeaveType = #{studentleavetype,jdbcType=INTEGER},
+      StudentLeaveStatus = #{studentleavestatus,jdbcType=INTEGER},
+      StudentLeaveReason = #{studentleavereason,jdbcType=VARCHAR},
+      StudentLeaveReplyReason = #{studentleavereplyreason,jdbcType=VARCHAR},
+      StudentLeaveDate = #{studentleavedate,jdbcType=DATE},
+      StudentLeaveReplyDate = #{studentleavereplydate,jdbcType=DATE},
+      StudentLeaveNewTrainingId = #{studentleavenewtrainingid,jdbcType=VARCHAR}
+    where StudentLeaveId = #{studentleaveid,jdbcType=VARCHAR}
+  </update>
+
+  <select id="select" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from StudentLeave
+    where StudentLeaveStudentId = #{studentleavestudentid,jdbcType=VARCHAR}
+  </select>
+</mapper>

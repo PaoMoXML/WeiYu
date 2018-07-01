@@ -3,9 +3,11 @@ package io.renren.modules.WeiYu.model;
 import java.util.Date;
 
 public class StudentIntegralAccount {
+    private String studentintegralaccountmainid;
+
     private String studentintegralaccountid;
 
-    private String studentintegralaccounttype;
+    private Integer studentintegralaccounttype;
 
     private Date studentintegralaccountoccurrencedate;
 
@@ -23,6 +25,14 @@ public class StudentIntegralAccount {
 
     private Integer studentintegralsitesstandbytwo;
 
+    public String getStudentintegralaccountmainid() {
+        return studentintegralaccountmainid;
+    }
+
+    public void setStudentintegralaccountmainid(String studentintegralaccountmainid) {
+        this.studentintegralaccountmainid = studentintegralaccountmainid == null ? null : studentintegralaccountmainid.trim();
+    }
+
     public String getStudentintegralaccountid() {
         return studentintegralaccountid;
     }
@@ -31,12 +41,12 @@ public class StudentIntegralAccount {
         this.studentintegralaccountid = studentintegralaccountid == null ? null : studentintegralaccountid.trim();
     }
 
-    public String getStudentintegralaccounttype() {
+    public Integer getStudentintegralaccounttype() {
         return studentintegralaccounttype;
     }
 
-    public void setStudentintegralaccounttype(String studentintegralaccounttype) {
-        this.studentintegralaccounttype = studentintegralaccounttype == null ? null : studentintegralaccounttype.trim();
+    public void setStudentintegralaccounttype(Integer studentintegralaccounttype) {
+        this.studentintegralaccounttype = studentintegralaccounttype;
     }
 
     public Date getStudentintegralaccountoccurrencedate() {

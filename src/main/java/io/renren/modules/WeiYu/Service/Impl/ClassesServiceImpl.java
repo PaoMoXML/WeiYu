@@ -8,6 +8,8 @@ import io.renren.modules.WeiYu.model.Classname;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("ClassesService")
 public class ClassesServiceImpl implements ClassesService {
     @Autowired
@@ -30,6 +32,8 @@ public class ClassesServiceImpl implements ClassesService {
     }
     @Override
     public Classname selectname(String classid){return classesMapper.selectname(classid);}
+    @Override
+    public List<Classes> selectallByCid (String classcoachid){return classesMapper.selectallByCid(classcoachid);}
 }
 
 

@@ -3,13 +3,13 @@ package io.renren.modules.WeiYu.mapper;
 import io.renren.modules.WeiYu.model.StudentIntegralAccount;
 
 public interface StudentIntegralAccountMapper {
-    int deleteByPrimaryKey(String studentintegralaccountid);
+    int deleteByPrimaryKey(String studentintegralaccountmainid);
 
     int insert(StudentIntegralAccount record);
 
     int insertSelective(StudentIntegralAccount record);
 
-    StudentIntegralAccount selectByPrimaryKey(String studentintegralaccountid);
+    StudentIntegralAccount selectByPrimaryKey(String studentintegralaccountmainid);
 
     int updateByPrimaryKeySelective(StudentIntegralAccount record);
 

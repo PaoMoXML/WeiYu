@@ -23,4 +23,10 @@ public interface TrainingMapper {
 
     List<Training> selectByidleave(Training record);
 
+    List<Training> selectQJ (Training record);
+
+    List<Training>selectByidANDDate (Training record);
+
+    List<Training>selectByidANDDateToday(Training record);
+
 }

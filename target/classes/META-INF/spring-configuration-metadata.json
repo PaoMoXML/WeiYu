@@ -22,6 +22,11 @@
       "sourceType": "io.renren.modules.WeiYu.Controller.config.WxMaProperties",
       "name": "wechat.miniapp",
       "type": "io.renren.modules.WeiYu.Controller.config.WxMaProperties"
+    },
+    {
+      "sourceType": "io.renren.modules.WeiYu.Controller.config.WxPayProperties",
+      "name": "wechat.pay",
+      "type": "io.renren.modules.WeiYu.Controller.config.WxPayProperties"
     }
   ],
   "properties": [
@@ -69,6 +74,30 @@
       "sourceType": "io.renren.modules.WeiYu.Controller.config.WxMaProperties",
       "name": "wechat.miniapp.token",
       "description": "设置微信小程序的token",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "io.renren.modules.WeiYu.Controller.config.WxPayProperties",
+      "name": "wechat.pay.app-id",
+      "description": "设置微信公众号的appid",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "io.renren.modules.WeiYu.Controller.config.WxPayProperties",
+      "name": "wechat.pay.key-path",
+      "description": "apiclient_cert.p12文件的绝对路径，或者如果放在项目中，请以classpath:开头指定",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "io.renren.modules.WeiYu.Controller.config.WxPayProperties",
+      "name": "wechat.pay.mch-id",
+      "description": "微信支付商户号",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "io.renren.modules.WeiYu.Controller.config.WxPayProperties",
+      "name": "wechat.pay.mch-key",
+      "description": "微信支付商户密钥",
       "type": "java.lang.String"
     }
   ]

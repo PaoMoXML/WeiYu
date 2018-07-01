@@ -32,4 +32,12 @@ public class TrainingServiceImpl implements TrainingService {
     public  List<Training> selectByidleave(Training record){
         return trainingMapper.selectByidleave(record);
     }
+    @Override
+    public List<Training> selectQJ (Training record){
+        return trainingMapper.selectQJ(record);
+    }
+    @Override
+    public  List<Training>selectByidANDDate (Training record){return trainingMapper.selectByidANDDate(record);}
+    @Override
+    public List<Training>selectByidANDDateToday(Training record){return trainingMapper.selectByidANDDateToday(record);}
 }

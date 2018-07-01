@@ -246,4 +246,54 @@
       </if>
     </where>
   </select>
+
+  <update id="updateByid" parameterType="io.renren.modules.WeiYu.model.SelectClass" >
+    update SelectClass
+    <set >
+      <if test="selectclassclassid != null" >
+        SelectClassClassId = #{selectclassclassid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclasstype != null" >
+        SelectClassType = #{selectclasstype,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintoncourtid != null" >
+        ClassBadmintonCourtId = #{classbadmintoncourtid,jdbcType=VARCHAR},
+      </if>
+      <if test="classbadmintonsitesid != null" >
+        ClassBadmintonSitesId = #{classbadmintonsitesid,jdbcType=VARCHAR},
+      </if>
+      <if test="classweek != null" >
+        Classweek = #{classweek,jdbcType=VARCHAR},
+      </if>
+      <if test="classteachingtime != null" >
+        ClassTeachingTime = #{classteachingtime,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassadministratorid != null" >
+        SelectClassAdministratorId = #{selectclassadministratorid,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassfilingdate != null" >
+        SelectClassFilingDate = #{selectclassfilingdate,jdbcType=DATE},
+      </if>
+      <if test="selectclassapprovaldate != null" >
+        SelectClassApprovalDate = #{selectclassapprovaldate,jdbcType=DATE},
+      </if>
+      <if test="selectclasspauseddate != null" >
+        SelectClassPausedDate = #{selectclasspauseddate,jdbcType=DATE},
+      </if>
+      <if test="selectclassenddate != null" >
+        SelectClassEndDate = #{selectclassenddate,jdbcType=DATE},
+      </if>
+      <if test="selectclassstate != null" >
+        SelectClassState = #{selectclassstate,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstandbyone != null" >
+        SelectClassStandbyone = #{selectclassstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="selectclassstandbytwo != null" >
+        SelectClassStandbytwo = #{selectclassstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where  SelectClassClassId = #{selectclassclassid,jdbcType=VARCHAR}
+    AND  SelectClassStudentId = #{selectclassstudentid,jdbcType=VARCHAR}
+  </update>
 </mapper>

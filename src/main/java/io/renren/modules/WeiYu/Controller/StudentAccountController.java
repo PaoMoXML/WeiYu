@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/StudentAccount")
@@ -31,9 +32,9 @@ public class StudentAccountController {
     @Autowired
     private allkeshiService allkeshiService;
     @ResponseBody
-    @RequestMapping(value = "/insert",method = RequestMethod.GET)
-
+    @RequestMapping(value = "/insert",method = RequestMethod.POST)
     public  int insert(StudentAccount record){
+        record.setStudentaccountmainid(UUID.randomUUID().toString());
         return studentAccountService.insert(record);
     }
     @ResponseBody
@@ -54,7 +55,7 @@ public class StudentAccountController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/selectYourAccount",method = RequestMethod.GET)
+    @RequestMapping(value = "/selectYourAccount",method = RequestMethod.POST)
     @ApiOperation("个人资产")
     public Map<String,Object> YourAccount(String studentaccountid,String studentintegralaccountid){
         List<totalkeshi> totalkeshiList = totalkeshiService.selectByid(studentaccountid);

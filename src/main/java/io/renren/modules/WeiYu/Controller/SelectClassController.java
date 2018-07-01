@@ -49,6 +49,12 @@ public class SelectClassController {
     public SelectClass selectByPrimaryKey(String selectclassid){
         return selectClassService.selectByPrimaryKey(selectclassid);
     }
+    @ResponseBody
+    @RequestMapping(value = "/updateByid",method = RequestMethod.GET)
+    @ApiOperation("挂起")
+    public int updateByid(SelectClass record){
+        return selectClassService.updateByid(record);
+    }
 
 }
 

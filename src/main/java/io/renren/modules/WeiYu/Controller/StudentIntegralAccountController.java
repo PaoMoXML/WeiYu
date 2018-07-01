@@ -2,11 +2,14 @@ package io.renren.modules.WeiYu.Controller;
 
 import io.renren.modules.WeiYu.Service.StudentIntegralAccountService;
 import io.renren.modules.WeiYu.model.StudentIntegralAccount;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.UUID;
 
 @Controller
 @RequestMapping(value = "/StudentIntegralAccount")
@@ -14,8 +17,10 @@ public class StudentIntegralAccountController {
     @Autowired
     private StudentIntegralAccountService studentIntegralAccountService;
     @ResponseBody
-    @RequestMapping(value = "/insert",method = RequestMethod.GET)
+    @RequestMapping(value = "/insert",method = RequestMethod.POST)
+    @ApiOperation("学生积分增减")
     public int insert(StudentIntegralAccount record){
+        record.setStudentintegralaccountmainid(UUID.randomUUID().toString());
         return studentIntegralAccountService.insert(record);
     }
     @ResponseBody

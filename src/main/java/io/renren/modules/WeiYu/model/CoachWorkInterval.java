@@ -1,6 +1,8 @@
 package io.renren.modules.WeiYu.model;
 
 public class CoachWorkInterval {
+    private String coachmainid;
+
     private String coachid;
 
     private String coachworkintervaltype;
@@ -10,6 +12,14 @@ public class CoachWorkInterval {
     private String coachworkintervalstandbyone;
 
     private Integer coachworkintervalstandbytwo;
+
+    public String getCoachmainid() {
+        return coachmainid;
+    }
+
+    public void setCoachmainid(String coachmainid) {
+        this.coachmainid = coachmainid == null ? null : coachmainid.trim();
+    }
 
     public String getCoachid() {
         return coachid;

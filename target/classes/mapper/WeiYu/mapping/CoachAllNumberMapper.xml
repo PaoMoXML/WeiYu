@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.CoachAllNumberMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.CoachAllNumber" >
+    <result column="SignInForClassCoachId" property="signinforclasscoachid" jdbcType="VARCHAR" />
+    <result column="zan" property="zan" jdbcType="DECIMAL" />
+    <result column="flowerNumber" property="flowernumber" jdbcType="DECIMAL" />
+    <result column="applauseNumber" property="applausenumber" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.CoachAllNumber" >
+    insert into CoachAllNumber (SignInForClassCoachId, zan, flowerNumber, 
+      applauseNumber)
+    values (#{signinforclasscoachid,jdbcType=VARCHAR}, #{zan,jdbcType=DECIMAL}, #{flowernumber,jdbcType=DECIMAL}, 
+      #{applausenumber,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.CoachAllNumber" >
+    insert into CoachAllNumber
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="signinforclasscoachid != null" >
+        SignInForClassCoachId,
+      </if>
+      <if test="zan != null" >
+        zan,
+      </if>
+      <if test="flowernumber != null" >
+        flowerNumber,
+      </if>
+      <if test="applausenumber != null" >
+        applauseNumber,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="signinforclasscoachid != null" >
+        #{signinforclasscoachid,jdbcType=VARCHAR},
+      </if>
+      <if test="zan != null" >
+        #{zan,jdbcType=DECIMAL},
+      </if>
+      <if test="flowernumber != null" >
+        #{flowernumber,jdbcType=DECIMAL},
+      </if>
+      <if test="applausenumber != null" >
+        #{applausenumber,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="selectallByCid" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.CoachAllNumber">
+    select *
+    from CoachAllNumber
+    where SignInForClassCoachId = #{signinforclasscoachid,jdbcType=VARCHAR}
+  </select>
+</mapper>

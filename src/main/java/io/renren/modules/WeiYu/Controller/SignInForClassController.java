@@ -1,6 +1,7 @@
 package io.renren.modules.WeiYu.Controller;
 
 import io.renren.modules.WeiYu.Service.SignInForClassService;
+import io.renren.modules.WeiYu.Service.StudentIntegralAccountService;
 import io.renren.modules.WeiYu.model.SignInForClass;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,8 @@ import java.util.List;
 public class SignInForClassController {
     @Autowired
     private SignInForClassService signInForClassService;
+    @Autowired
+    private StudentIntegralAccountService studentIntegralAccountService;
     @ResponseBody
     @RequestMapping(value = "/insert",method = RequestMethod.GET)
     public int insert(SignInForClass record){

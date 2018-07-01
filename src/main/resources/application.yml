@@ -90,6 +90,12 @@ wechat:
   token: 111
   aesKey: 111
   msgDataFormat: JSON
+ pay:
+  appId: wx16510ce4eebf98c9
+  mchId: 1494685642
+  mchKey: wym618dxtyprx194yf6x5cf4y18ftuww
+  keyPath: classpath:apiclient_cert.p12
+
 
 
 

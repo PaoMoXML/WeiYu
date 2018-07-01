@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.renren.modules.WeiYu.mapper.StudentIntegralAccountMapper" >
+  <resultMap id="BaseResultMap" type="io.renren.modules.WeiYu.model.StudentIntegralAccount" >
+    <id column="StudentIntegralAccountMainId" property="studentintegralaccountmainid" jdbcType="VARCHAR" />
+    <result column="StudentIntegralAccountId" property="studentintegralaccountid" jdbcType="VARCHAR" />
+    <result column="StudentIntegralAccountType" property="studentintegralaccounttype" jdbcType="INTEGER" />
+    <result column="StudentIntegralAccountOccurrenceDate" property="studentintegralaccountoccurrencedate" jdbcType="DATE" />
+    <result column="StudentIntegralAccountObtainWay" property="studentintegralaccountobtainway" jdbcType="CHAR" />
+    <result column="StudentIntegralAccountGoodsType" property="studentintegralaccountgoodstype" jdbcType="CHAR" />
+    <result column="StudentIntegralAccountGoodsQuantity" property="studentintegralaccountgoodsquantity" jdbcType="INTEGER" />
+    <result column="StudentIntegralAccountPaymentAccount" property="studentintegralaccountpaymentaccount" jdbcType="INTEGER" />
+    <result column="StudentIntegralAccountRemainderPaymentAccount" property="studentintegralaccountremainderpaymentaccount" jdbcType="INTEGER" />
+    <result column="StudentIntegralSitesStandbyone" property="studentintegralsitesstandbyone" jdbcType="VARCHAR" />
+    <result column="StudentIntegralSitesStandbytwo" property="studentintegralsitesstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    StudentIntegralAccountMainId, StudentIntegralAccountId, StudentIntegralAccountType, 
+    StudentIntegralAccountOccurrenceDate, StudentIntegralAccountObtainWay, StudentIntegralAccountGoodsType, 
+    StudentIntegralAccountGoodsQuantity, StudentIntegralAccountPaymentAccount, StudentIntegralAccountRemainderPaymentAccount, 
+    StudentIntegralSitesStandbyone, StudentIntegralSitesStandbytwo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from StudentIntegralAccount
+    where StudentIntegralAccountMainId = #{studentintegralaccountmainid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from StudentIntegralAccount
+    where StudentIntegralAccountMainId = #{studentintegralaccountmainid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="io.renren.modules.WeiYu.model.StudentIntegralAccount" >
+    insert into StudentIntegralAccount (StudentIntegralAccountMainId, StudentIntegralAccountId, 
+      StudentIntegralAccountType, StudentIntegralAccountOccurrenceDate, 
+      StudentIntegralAccountObtainWay, StudentIntegralAccountGoodsType, 
+      StudentIntegralAccountGoodsQuantity, StudentIntegralAccountPaymentAccount, 
+      StudentIntegralAccountRemainderPaymentAccount, StudentIntegralSitesStandbyone, 
+      StudentIntegralSitesStandbytwo)
+    values (#{studentintegralaccountmainid,jdbcType=VARCHAR}, #{studentintegralaccountid,jdbcType=VARCHAR}, 
+      #{studentintegralaccounttype,jdbcType=INTEGER}, #{studentintegralaccountoccurrencedate,jdbcType=DATE}, 
+      #{studentintegralaccountobtainway,jdbcType=CHAR}, #{studentintegralaccountgoodstype,jdbcType=CHAR}, 
+      #{studentintegralaccountgoodsquantity,jdbcType=INTEGER}, #{studentintegralaccountpaymentaccount,jdbcType=INTEGER}, 
+      #{studentintegralaccountremainderpaymentaccount,jdbcType=INTEGER}, #{studentintegralsitesstandbyone,jdbcType=VARCHAR}, 
+      #{studentintegralsitesstandbytwo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="io.renren.modules.WeiYu.model.StudentIntegralAccount" >
+    insert into StudentIntegralAccount
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="studentintegralaccountmainid != null" >
+        StudentIntegralAccountMainId,
+      </if>
+      <if test="studentintegralaccountid != null" >
+        StudentIntegralAccountId,
+      </if>
+      <if test="studentintegralaccounttype != null" >
+        StudentIntegralAccountType,
+      </if>
+      <if test="studentintegralaccountoccurrencedate != null" >
+        StudentIntegralAccountOccurrenceDate,
+      </if>
+      <if test="studentintegralaccountobtainway != null" >
+        StudentIntegralAccountObtainWay,
+      </if>
+      <if test="studentintegralaccountgoodstype != null" >
+        StudentIntegralAccountGoodsType,
+      </if>
+      <if test="studentintegralaccountgoodsquantity != null" >
+        StudentIntegralAccountGoodsQuantity,
+      </if>
+      <if test="studentintegralaccountpaymentaccount != null" >
+        StudentIntegralAccountPaymentAccount,
+      </if>
+      <if test="studentintegralaccountremainderpaymentaccount != null" >
+        StudentIntegralAccountRemainderPaymentAccount,
+      </if>
+      <if test="studentintegralsitesstandbyone != null" >
+        StudentIntegralSitesStandbyone,
+      </if>
+      <if test="studentintegralsitesstandbytwo != null" >
+        StudentIntegralSitesStandbytwo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="studentintegralaccountmainid != null" >
+        #{studentintegralaccountmainid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentintegralaccountid != null" >
+        #{studentintegralaccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentintegralaccounttype != null" >
+        #{studentintegralaccounttype,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountoccurrencedate != null" >
+        #{studentintegralaccountoccurrencedate,jdbcType=DATE},
+      </if>
+      <if test="studentintegralaccountobtainway != null" >
+        #{studentintegralaccountobtainway,jdbcType=CHAR},
+      </if>
+      <if test="studentintegralaccountgoodstype != null" >
+        #{studentintegralaccountgoodstype,jdbcType=CHAR},
+      </if>
+      <if test="studentintegralaccountgoodsquantity != null" >
+        #{studentintegralaccountgoodsquantity,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountpaymentaccount != null" >
+        #{studentintegralaccountpaymentaccount,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountremainderpaymentaccount != null" >
+        #{studentintegralaccountremainderpaymentaccount,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralsitesstandbyone != null" >
+        #{studentintegralsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentintegralsitesstandbytwo != null" >
+        #{studentintegralsitesstandbytwo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="io.renren.modules.WeiYu.model.StudentIntegralAccount" >
+    update StudentIntegralAccount
+    <set >
+      <if test="studentintegralaccountid != null" >
+        StudentIntegralAccountId = #{studentintegralaccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="studentintegralaccounttype != null" >
+        StudentIntegralAccountType = #{studentintegralaccounttype,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountoccurrencedate != null" >
+        StudentIntegralAccountOccurrenceDate = #{studentintegralaccountoccurrencedate,jdbcType=DATE},
+      </if>
+      <if test="studentintegralaccountobtainway != null" >
+        StudentIntegralAccountObtainWay = #{studentintegralaccountobtainway,jdbcType=CHAR},
+      </if>
+      <if test="studentintegralaccountgoodstype != null" >
+        StudentIntegralAccountGoodsType = #{studentintegralaccountgoodstype,jdbcType=CHAR},
+      </if>
+      <if test="studentintegralaccountgoodsquantity != null" >
+        StudentIntegralAccountGoodsQuantity = #{studentintegralaccountgoodsquantity,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountpaymentaccount != null" >
+        StudentIntegralAccountPaymentAccount = #{studentintegralaccountpaymentaccount,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralaccountremainderpaymentaccount != null" >
+        StudentIntegralAccountRemainderPaymentAccount = #{studentintegralaccountremainderpaymentaccount,jdbcType=INTEGER},
+      </if>
+      <if test="studentintegralsitesstandbyone != null" >
+        StudentIntegralSitesStandbyone = #{studentintegralsitesstandbyone,jdbcType=VARCHAR},
+      </if>
+      <if test="studentintegralsitesstandbytwo != null" >
+        StudentIntegralSitesStandbytwo = #{studentintegralsitesstandbytwo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where StudentIntegralAccountMainId = #{studentintegralaccountmainid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="io.renren.modules.WeiYu.model.StudentIntegralAccount" >
+    update StudentIntegralAccount
+    set StudentIntegralAccountId = #{studentintegralaccountid,jdbcType=VARCHAR},
+      StudentIntegralAccountType = #{studentintegralaccounttype,jdbcType=INTEGER},
+      StudentIntegralAccountOccurrenceDate = #{studentintegralaccountoccurrencedate,jdbcType=DATE},
+      StudentIntegralAccountObtainWay = #{studentintegralaccountobtainway,jdbcType=CHAR},
+      StudentIntegralAccountGoodsType = #{studentintegralaccountgoodstype,jdbcType=CHAR},
+      StudentIntegralAccountGoodsQuantity = #{studentintegralaccountgoodsquantity,jdbcType=INTEGER},
+      StudentIntegralAccountPaymentAccount = #{studentintegralaccountpaymentaccount,jdbcType=INTEGER},
+      StudentIntegralAccountRemainderPaymentAccount = #{studentintegralaccountremainderpaymentaccount,jdbcType=INTEGER},
+      StudentIntegralSitesStandbyone = #{studentintegralsitesstandbyone,jdbcType=VARCHAR},
+      StudentIntegralSitesStandbytwo = #{studentintegralsitesstandbytwo,jdbcType=INTEGER}
+    where StudentIntegralAccountMainId = #{studentintegralaccountmainid,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

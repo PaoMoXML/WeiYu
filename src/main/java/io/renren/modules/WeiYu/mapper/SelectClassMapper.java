@@ -18,4 +18,7 @@ public interface SelectClassMapper {
     int updateByPrimaryKey(SelectClass record);
 
     List<SelectClass> selectByOther(SelectClass record);
+
+    int updateByid(SelectClass record);
+
 }

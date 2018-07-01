@@ -11,6 +11,8 @@ public interface TrainingService {
     List<Training> selectByid(String CoachId);
     List<Training> selectByiddate(Training record);
     List<Training> selectByidleave(Training record);
-
+    List<Training> selectQJ (Training record);
+    List<Training>selectByidANDDate (Training record);
+    List<Training>selectByidANDDateToday(Training record);
 
 }

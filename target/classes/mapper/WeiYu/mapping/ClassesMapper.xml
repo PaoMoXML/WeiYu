@@ -234,4 +234,10 @@
     from Classes
     where ClassId = #{classid,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectallByCid" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.Classes">
+    select *
+    from Classes
+    where ClassCoachId = #{classcoachid,jdbcType=VARCHAR}
+  </select>
 </mapper>

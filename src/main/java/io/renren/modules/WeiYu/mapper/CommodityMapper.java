@@ -2,6 +2,8 @@ package io.renren.modules.WeiYu.mapper;
 
 import io.renren.modules.WeiYu.model.Commodity;
 
+import java.util.List;
+
 public interface CommodityMapper {
     int deleteByPrimaryKey(String commodityid);
 
@@ -14,4 +16,6 @@ public interface CommodityMapper {
     int updateByPrimaryKeySelective(Commodity record);
 
     int updateByPrimaryKey(Commodity record);
+
+    List<Commodity> selectall();
 }

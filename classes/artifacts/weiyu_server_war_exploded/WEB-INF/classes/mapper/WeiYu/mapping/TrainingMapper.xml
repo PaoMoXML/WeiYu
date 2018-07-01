@@ -18,6 +18,22 @@
     TrainingId, TrainingClassId, Trainingstatus, TraniningDate, CoachId, CoachLeave, 
     leaveReason, CoachLeaveStatus, ReplaceCoachId, TrainingStandbyone, TrainingStandbytwo
   </sql>
+
+  <resultMap id="QJTrainingMap" type="io.renren.modules.WeiYu.model.QJTraining" >
+    <id column="TrainingId" property="trainingid" jdbcType="VARCHAR" />
+    <result column="TrainingClassId" property="trainingclassid" jdbcType="VARCHAR" />
+    <result column="Trainingstatus" property="trainingstatus" jdbcType="VARCHAR" />
+    <result column="TraniningDate" property="traniningdate" jdbcType="DATE" />
+    <result column="CoachId" property="coachid" jdbcType="VARCHAR" />
+    <result column="CoachLeave" property="coachleave" jdbcType="INTEGER" />
+    <result column="leaveReason" property="leavereason" jdbcType="VARCHAR" />
+    <result column="CoachLeaveStatus" property="coachleavestatus" jdbcType="CHAR" />
+    <result column="ReplaceCoachId" property="replacecoachid" jdbcType="VARCHAR" />
+    <result column="TrainingStandbyone" property="trainingstandbyone" jdbcType="VARCHAR" />
+    <result column="TrainingStandbytwo" property="trainingstandbytwo" jdbcType="INTEGER" />
+  </resultMap>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
@@ -184,7 +200,29 @@
     AND CoachLeave = #{coachleave,jdbcType=INTEGER}
   </select>
 
+  <select id="selectQJ" resultMap="QJTrainingMap" parameterType="io.renren.modules.WeiYu.model.QJTraining" >
+    select
+    TraniningDate,TrainingId
+    from Training
+    where TraniningDate > #{traniningdate,jdbcType=DATE}
+    AND TrainingClassId = #{trainingclassid,jdbcType=VARCHAR}
+    AND  Trainingstatus = 1
+    limit 4
+  </select>
 
+  <select id="selectByidANDDate" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.Training" >
+    select *
+    from Training
+    where  CoachId = #{coachid,jdbcType=VARCHAR}
+    AND  MONTH (TraniningDate) = MONTH (#{traniningdate,jdbcType=DATE})
+  </select>
+
+  <select id="selectByidANDDateToday" resultMap="BaseResultMap" parameterType="io.renren.modules.WeiYu.model.Training" >
+    select *
+    from Training
+    where  CoachId = #{coachid,jdbcType=VARCHAR}
+    AND  TraniningDate = #{traniningdate,jdbcType=DATE}
+  </select>
 
 
 </mapper>

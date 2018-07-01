@@ -12,4 +12,5 @@ public interface TeachingTimeService {
     TeachingTime selectByPrimaryKey(String teachingtimeid);
     List<TeachingTime> selectalltime();
     List<TeachingTime> selectBywd(TeachingTime record);
+
 }

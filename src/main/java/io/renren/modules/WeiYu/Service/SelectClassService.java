@@ -11,4 +11,5 @@ public interface SelectClassService {
     int updateByPrimaryKey(SelectClass record);
     SelectClass selectByPrimaryKey(String selectclassid);
     List<SelectClass>selectByOther(SelectClass record);
+    int updateByid(SelectClass record);
 }

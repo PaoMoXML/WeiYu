@@ -43,7 +43,7 @@ public class TeachingTimeController {
         return teachingTimeService.selectalltime();
     }
     @ResponseBody
-    @RequestMapping(value = "/selectwd",method = RequestMethod.GET)
+    @RequestMapping(value = "/selectwd",method = RequestMethod.POST)
     @ApiOperation("获取时段2")
     public List<TeachingTime> selectBywd(TeachingTime record){
         return teachingTimeService.selectBywd(record);
