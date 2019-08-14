@@ -1,6 +1,5 @@
 package io.renren.modules.WeiYu.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 

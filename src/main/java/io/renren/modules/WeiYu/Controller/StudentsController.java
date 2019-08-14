@@ -33,7 +33,7 @@ public class StudentsController {
         return studentsService.updateByPrimaryKeySelective(record);
     }
     @ResponseBody
-    @RequestMapping(value = "/select",method = RequestMethod.GET)
+    @RequestMapping(value = "/select",method =)
     @ApiOperation("首次登录")
     public  Students selectByPrimaryKey(String studentid){
      Students student = studentsService.selectByPrimaryKey(studentid);

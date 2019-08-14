@@ -102,6 +102,7 @@ public class ShiroConfig {
         filterMap.put("/MyClassDetail/**", "anon");
         filterMap.put("/StudentLeave/**", "anon");
         filterMap.put("/trainingToDetail/**", "anon");
+        filterMap.put("/file/**", "anon");
         filterMap.put("/pay/**", "anon");
         filterMap.put("/**", "oauth2");
         shiroFilter.setFilterChainDefinitionMap(filterMap);
